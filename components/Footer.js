@@ -6,7 +6,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 
 import { lowerNavigation } from "../data/lowerNavigation";
-import Inputfield from "./components/Inputfield";
+import InputField from "./InputField";
 
 const Footer = ({ categories }) => {
   return (
@@ -27,7 +27,7 @@ const Footer = ({ categories }) => {
             Get the latest posts, articles and courses sent directly to your
             inbox
           </p>
-          <Inputfield
+          <InputField
             type="email"
             label="Notify me (coming soon...)"
             placeholder="E-mail"

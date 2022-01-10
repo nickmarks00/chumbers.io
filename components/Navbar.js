@@ -6,7 +6,7 @@ import { BsDownload } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 import { lowerNavigation } from "../data/lowerNavigation";
-import Inputfield from "./components/Inputfield";
+import InputField from "./InputField";
 
 const Navbar = ({ categories }) => {
   const [show, setShow] = useState(false);
@@ -38,7 +38,7 @@ const Navbar = ({ categories }) => {
           list={lowerNavigation[2][1]}
         />
 
-        <Inputfield
+        <InputField
           className="md:hidden w-screen mx-auto"
           type="text"
           label="SEARCH (coming soon...)"
@@ -61,7 +61,7 @@ const UpperNav = ({ setToggle, isToggled }) => {
         </Link>
       </h1>
       <div className="flex-grow px-2 pb-5 hidden md:flex relative z-10">
-        <Inputfield
+        <InputField
           type="text"
           label="SEARCH (coming soon...)"
           placeholder="Browse the site..."
