@@ -1,7 +1,6 @@
 import React from "react";
 
 const TableOfContents = ({ headings }) => {
-  console.log(headings);
   return (
     <nav className="toc " aria-label="Table of contents">
       <h3 className="uppercase mb-3 pl-2 text-gray-400 text-sm">

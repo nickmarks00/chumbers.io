@@ -3,13 +3,13 @@ import { getCategoriesFull } from "../../services/getCategories";
 
 import LinkedMeta from "../../sections/LinkedMeta";
 
-const index = ({ categories }) => {
+const AllCategories = ({ categories }) => {
   return (
     <LinkedMeta seo="All categories" title="Categories" nodes={categories} />
   );
 };
 
-export default index;
+export default AllCategories;
 
 export async function getStaticProps() {
   const categories = await getCategoriesFull();

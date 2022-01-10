@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
 import { MDXRemote } from "next-mdx-remote";
@@ -19,8 +20,16 @@ import components from "../../styles/components";
 
 import TableOfContents from "../../components/TableOfContents";
 import { mdxSerializer } from "../../services/mdxSerializer";
+import NotFoundPage from "../404";
+import Error from "next/error";
 
 const Content = ({ post }) => {
+  const router = useRouter();
+
+  if (!router.isFallback && !post?.slug) {
+    return <Error statusCode={404} />;
+  }
+
   const {
     title,
     heroImage,
@@ -97,15 +106,16 @@ const Content = ({ post }) => {
               </Link>
             )}
             <article className="flex flex-wrap w-3/5 justify-center">
-              {tags.map((tag, idx) => {
-                return (
-                  <Link href={`/tags/${tag.slug}`} key={idx}>
-                    <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition  duration-300 hover:text-white  min-w-max">
-                      {`#${tag.name}`}
-                    </a>
-                  </Link>
-                );
-              })}
+              {tags.length > 0 &&
+                tags.map((tag, idx) => {
+                  return (
+                    <Link href={`/tags/${tag.slug}`} key={idx}>
+                      <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition  duration-300 hover:text-white  min-w-max">
+                        {`#${tag.name}`}
+                      </a>
+                    </Link>
+                  );
+                })}
             </article>
           </section>
         </header>
@@ -219,6 +229,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FiYoutube, FiLinkedin, FiGithub } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
@@ -43,8 +44,9 @@ const Footer = ({ categories }) => {
           <div className="flex items-center md:ml-2">
             Built with{" "}
             <a href="https://www.nextjs.org" className="ml-2">
-              <img
-                style={{ height: 20, width: 20 }}
+              <Image
+                height="20px"
+                width="20px"
                 src="/images/next.ico"
                 alt="next-icon"
               />
@@ -53,22 +55,25 @@ const Footer = ({ categories }) => {
               href="https://www.apollographql.com/"
               className="ml-2 bg-white rounded-full"
             >
-              <img
-                style={{ height: 20, width: 20 }}
+              <Image
+                height="20px"
+                width="20px"
                 src="/images/apollo.png"
                 alt="apollo-gql-icon"
               />
             </a>
             <a href="https://www.graphcms.com" className="ml-2">
-              <img
-                style={{ height: 20, width: 20 }}
+              <Image
+                height="20px"
+                width="20px"
                 src="/images/graphcms.png"
                 alt="graphcms-icon"
               />
             </a>
             <a href="https://www.vercel.com" className="ml-2">
-              <img
-                style={{ height: 20, width: 20 }}
+              <Image
+                height="20px"
+                width="20px"
                 src="/images/vercel.ico"
                 alt="vercel-icon"
               />

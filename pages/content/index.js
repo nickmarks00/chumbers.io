@@ -4,7 +4,7 @@ import LinkedContent from "../../sections/LinkedContent";
 import { getAllPosts } from "../../services/getPosts";
 import { mdxSerializer } from "../../services/mdxSerializer";
 
-const index = ({ posts, img, mdx }) => {
+const AllPosts = ({ posts, img, mdx }) => {
   return (
     <LinkedContent
       name="all posts"
@@ -16,9 +16,9 @@ const index = ({ posts, img, mdx }) => {
   );
 };
 
-export default index;
+export default AllPosts;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const data = await getAllPosts();
 
   const mdx = await Promise.all(

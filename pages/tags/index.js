@@ -3,11 +3,11 @@ import { getTagsFull } from "../../services/getTags";
 
 import LinkedMeta from "../../sections/LinkedMeta";
 
-const index = ({ tags }) => {
+const AllTags = ({ tags }) => {
   return <LinkedMeta seo="All tags" title="Tags" nodes={tags} />;
 };
 
-export default index;
+export default AllTags;
 
 export async function getStaticProps() {
   const tags = await getTagsFull();

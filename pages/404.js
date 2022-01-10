@@ -4,14 +4,14 @@ import Link from "next/link";
 const NotFoundPage = () => {
   return (
     <main id="notfound" className="h-96">
-      <div class="notfound-bg">
+      <div className="notfound-bg">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="notfound">
-        <div class="notfound-404">
+      <div className="notfound">
+        <div className="notfound-404">
           <h1 className="font-display text-gray-200">404</h1>
         </div>
         <h2 className="font-display text-gray-200">Page Not Found</h2>
