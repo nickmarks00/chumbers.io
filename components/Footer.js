@@ -6,7 +6,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 
 import { lowerNavigation } from "../data/lowerNavigation";
-import Inputfield from "./Inputfield";
+import Inputfield from "./components/Inputfield";
 
 const Footer = ({ categories }) => {
   return (

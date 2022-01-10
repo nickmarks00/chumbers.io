@@ -6,7 +6,7 @@ import { BsDownload } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 import { lowerNavigation } from "../data/lowerNavigation";
-import Inputfield from "./Inputfield";
+import Inputfield from "./components/Inputfield";
 
 const Navbar = ({ categories }) => {
   const [show, setShow] = useState(false);
