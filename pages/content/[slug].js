@@ -19,29 +19,14 @@ import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
 
 import TableOfContents from "../../components/TableOfContents";
+import Loader from "../../components/Loader";
 import { mdxSerializer } from "../../services/mdxSerializer";
-import NotFoundPage from "../404";
-import Error from "next/error";
 
 const Content = ({ post }) => {
   const router = useRouter();
-
-  if (!router.isFallback && !post?.slug) {
-    return <Error statusCode={404} />;
+  if (router.isFallback) {
+    return <Loader />;
   }
-
-  const {
-    title,
-    heroImage,
-    category,
-    updatedAt,
-    publishedAt,
-    tags,
-    prevPost,
-    nextPost,
-    course,
-    headings,
-  } = post;
 
   const url = typeof window !== "undefined" ? window.location.href : "";
 
@@ -59,8 +44,12 @@ const Content = ({ post }) => {
       <div className="h-96">
         <div className="w-full h-full relative">
           <Image
-            src={heroImage.url}
-            alt={heroImage.alternate ? heroImage.alternate : "post hero-image"}
+            src={post.heroImage.url}
+            alt={
+              post.heroImage.alternate
+                ? post.heroImage.alternate
+                : "post hero-image"
+            }
             priority={true}
             layout="fill"
             objectFit="cover"
@@ -74,23 +63,25 @@ const Content = ({ post }) => {
               <a className="transition transform duration-300 hover:text-gray-200 hover:underline">{`Home`}</a>
             </Link>
             <p>{`   /   `}</p>
-            <Link href={`/categories/${category.slug}`}>
-              <a className="transition transform duration-300 hover:text-gray-200 hover:underline">{`${category.name}`}</a>
+            <Link href={`/categories/${post.category.slug}`}>
+              <a className="transition transform duration-300 hover:text-gray-200 hover:underline">{`${post.category.name}`}</a>
             </Link>
             <p>{`   /`}</p>
           </aside>
-          <h1 className="text-5xl font-display capitalize">{title}</h1>
+          <h1 className="text-5xl font-display capitalize">{post.title}</h1>
 
           <section className="flex flex-col items-center text-xs w-3/5 mx-auto items-center">
             <div className="flex flex-col sm:flex-row my-2">
               <article className="flex py-1 mt-1">
                 <BsFillCalendarFill className="mr-1" />
                 <p className="mr-2">
-                  {`Updated: ${moment(updatedAt).format("MMM DD, YYYY")}`}
+                  {`Updated: ${moment(post.updatedAt).format("MMM DD, YYYY")}`}
                 </p>
                 <BsFillCalendarFill className="mr-1" />
                 <p className="mr-2">
-                  {`Published: ${moment(publishedAt).format("MMM DD, YYYY")}`}
+                  {`Published: ${moment(post.publishedAt).format(
+                    "MMM DD, YYYY"
+                  )}`}
                 </p>
               </article>
               <article className="flex py-1 mt-1">
@@ -98,16 +89,16 @@ const Content = ({ post }) => {
                 <p>3 min. read</p>
               </article>
             </div>
-            {course && (
-              <Link href={`/courses/${courseSlug}`}>
+            {post.course && (
+              <Link href={`/courses/${post.course.slug}`}>
                 <a className="mb-6 rounded-md bg-blue-500 transition-200 hover:text-white p-2 text-bold text-md">
-                  {course.courseTitle}
+                  {post.course.courseTitle}
                 </a>
               </Link>
             )}
             <article className="flex flex-wrap w-3/5 justify-center">
-              {tags.length > 0 &&
-                tags.map((tag, idx) => {
+              {post.tags.length > 0 &&
+                post.tags.map((tag, idx) => {
                   return (
                     <Link href={`/tags/${tag.slug}`} key={idx}>
                       <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition  duration-300 hover:text-white  min-w-max">
@@ -125,35 +116,37 @@ const Content = ({ post }) => {
           style={{ maxWidth: 740 }}
         >
           <div className="w-full flex flex-col ">
-            {headings.length > 0 && <TableOfContents headings={headings} />}
+            {post.headings.length > 0 && (
+              <TableOfContents headings={post.headings} />
+            )}
             <MDXRemote {...post.mdx} components={components} />
           </div>
         </section>
 
-        {course && (
+        {post.course && (
           <section
             className={`justify-between items-end flex my-16 text-sm text-gray-600 xl:mx-auto md:mx-28 xs:mx-3 ${
-              !prevPost && "flex-row-reverse"
+              !post.prevPost && "flex-row-reverse"
             }`}
             style={{ maxWidth: 740 }}
           >
-            {prevPost && (
-              <Link href={`/content/${prevPost.slug}`}>
+            {post.prevPost && (
+              <Link href={`/content/${post.prevPost.slug}`}>
                 <a className=" w-48 flex flex-col items-start text-left transition transform duration-200 hover:text-teal ">
-                  <p>{prevPost.title}</p>
+                  <p>{post.prevPost.title}</p>
                   <BsArrowLeft className="w-8 h-8 mt-1" />
                 </a>
               </Link>
             )}
-            {nextPost && (
-              <Link href={`/content/${nextPost.slug}`}>
+            {post.nextPost && (
+              <Link href={`/content/${post.nextPost.slug}`}>
                 <a className=" w-48 flex flex-col items-end text-right transition transform duration-200 hover:text-teal ">
-                  <p>{nextPost.title}</p>
+                  <p>{post.nextPost.title}</p>
                   <BsArrowRight className="w-8 h-8 mt-1" />
                 </a>
               </Link>
             )}
-            {!nextPost && !course.isCompleted && (
+            {!post.nextPost && !post.course.isCompleted && (
               <a
                 className=" w-48 flex flex-col items-end text-right text-gray-400 "
                 disabled
@@ -174,7 +167,7 @@ const Content = ({ post }) => {
             <a
               target="_blank"
               rel="noreferrer"
-              href={`https://twitter.com/intent/tweet?url=${url}&text=${title}&via=nickmarks00`}
+              href={`https://twitter.com/intent/tweet?url=${url}&text=${post.title}&via=nickmarks00`}
             >
               <FiTwitter className="h-10 w-10 text-gray-400" />
             </a>
@@ -229,6 +222,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

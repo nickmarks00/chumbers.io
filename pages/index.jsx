@@ -6,6 +6,7 @@ import { CategoryCarousel } from "../sections/CategoryCarousel";
 import Featured from "../sections/Featured";
 import Latest from "../sections/Latest";
 import TagsList from "../sections/TagsList";
+import Seo from "../components/SEO";
 
 import { getCategoriesFull } from "../services/getCategories";
 import { getFeatured, getLatest } from "../services/getTypePosts";
@@ -38,6 +39,7 @@ export default function Home() {
   }, []);
   return (
     <>
+      <Seo title="Welcome" />
       <main className="mx-10 my-10 xl:mx-auto" style={{ maxWidth: 1080 }}>
         <Vanta />
         <CategoryCarousel categories={categories} />

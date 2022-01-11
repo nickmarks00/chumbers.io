@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useRouter } from "next/router";
 import LinkedContent from "../../sections/LinkedContent";
 import { mdxSerializer } from "../../services/mdxSerializer";
+import Loader from "../../components/Loader";
 
 import {
   getSingleCategory,
@@ -9,13 +10,16 @@ import {
 } from "../../services/getCategories";
 
 const Category = ({ category, mdx }) => {
-  const { name, categoryPicture, posts } = category;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <LinkedContent
-      name={name}
-      picture={categoryPicture}
-      posts={posts}
+      name={category.name}
+      picture={category.categoryPicture}
+      posts={category.posts}
       isCategory={true}
       mdx={mdx}
     />
@@ -51,6 +55,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

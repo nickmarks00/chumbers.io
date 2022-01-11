@@ -1,21 +1,32 @@
 import React from "react";
-
+import { useRouter } from "next/router";
 import LinkedContent from "../../sections/LinkedContent";
 import { mdxSerializer } from "../../services/mdxSerializer";
+import Loader from "../../components/Loader";
+import Seo from "../../components/SEO";
 
 import { getSingleTag, getTagPaths } from "../../services/getTags";
 
 const Tag = ({ tag, mdx }) => {
-  const { name, tagPicture, post } = tag;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
-    <LinkedContent
-      name={name}
-      picture={tagPicture}
-      posts={post}
-      isCategory={true}
-      mdx={mdx}
-    />
+    <>
+      <Seo
+        title={`#${tag.name}`}
+        description={`Content relating to tag ${tag.name}`}
+      />
+      <LinkedContent
+        name={tag.name}
+        picture={tag.tagPicture}
+        posts={tag.post}
+        isCategory={true}
+        mdx={mdx}
+      />
+    </>
   );
 };
 
@@ -48,6 +59,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

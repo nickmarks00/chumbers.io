@@ -45,6 +45,18 @@ export const getSinglePost = async (slug) => {
             name
             slug
           }
+          prevPost {
+            title
+            slug
+          }
+          nextPost {
+            title
+            slug
+          }
+          course {
+            courseTitle
+            slug
+          }
         }
       }
     `,

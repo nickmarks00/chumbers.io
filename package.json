@@ -1,5 +1,14 @@
 {
+  "name": "chumbers-io",
+  "version": "1.0.0",
   "private": true,
+  "description": "A personal blogging, essays and content website",
+  "author": "nickmarks00",
+  "keywords": [
+    "next-js",
+    "tailwind",
+    "graphql"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
