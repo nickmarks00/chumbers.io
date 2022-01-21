@@ -53,8 +53,8 @@ export const getSinglePost = async (slug) => {
             title
             slug
           }
-          course {
-            courseTitle
+          series {
+            seriesTitle
             slug
           }
         }
@@ -81,6 +81,7 @@ export const getAllPosts = async () => {
           content {
             markdown
           }
+          excerpt
           heroImage {
             alternate
             url
@@ -90,10 +91,6 @@ export const getAllPosts = async () => {
             name
             slug
           }
-        }
-        asset(where: { id: "cky59uydk1wpf0c349b7xaetm" }) {
-          alternate
-          url
         }
       }
     `,

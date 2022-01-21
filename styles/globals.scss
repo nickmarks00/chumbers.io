@@ -605,6 +605,9 @@ code {
   &.l3 {
     -webkit-line-clamp: var(--line-clamp, 3);
   }
+  &.l2 {
+    -webkit-line-clamp: var(--line-clamp, 2);
+  }
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-break: var(--word-break, "none");

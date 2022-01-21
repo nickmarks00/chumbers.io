@@ -24,7 +24,7 @@ const Footer = ({ categories }) => {
             Subscribe to receive updates
           </h4>
           <p className="text-gray-200">
-            Get the latest posts, articles and courses sent directly to your
+            Get the latest posts, articles and series sent directly to your
             inbox
           </p>
           <InputField
@@ -39,48 +39,63 @@ const Footer = ({ categories }) => {
         </div>
       </div>
       <div className="sm:mt-7 md:mt-auto pt-6 pb-8 sm:flex sm:justify-between border-t border-gray-100 xs:block">
-        <article className="text-white font-medium xs:mb-4 sm:mb-3 flex flex-col md:flex-row">
-          <span>&copy; {new Date().getFullYear()} chumbers.com.</span>
-          <div className="flex items-center md:ml-2">
+        <article className="text-white font-medium xs:mb-4 sm:mb-3 flex flex-col md:flex-row items-center justify-start">
+          <span>&copy; {new Date().getFullYear()} chumbers.io.</span>
+          <div className="flex items-center md:ml-2 justify-start">
             Built with{" "}
-            <a href="https://www.nextjs.org" className="ml-2">
-              <Image
-                height="20px"
-                width="20px"
-                src="/images/next.ico"
-                alt="next-icon"
-              />
-            </a>
-            <a
-              href="https://www.apollographql.com/"
-              className="ml-2 bg-white rounded-full"
-            >
-              <Image
-                height="20px"
-                width="20px"
-                src="/images/apollo.png"
-                alt="apollo-gql-icon"
-              />
-            </a>
-            <a href="https://www.graphcms.com" className="ml-2">
-              <Image
-                height="20px"
-                width="20px"
-                src="/images/graphcms.png"
-                alt="graphcms-icon"
-              />
-            </a>
-            <a href="https://www.vercel.com" className="ml-2">
-              <Image
-                height="20px"
-                width="20px"
-                src="/images/vercel.ico"
-                alt="vercel-icon"
-              />
-            </a>
+            <div className="flex items-center">
+              <a
+                href="https://www.nextjs.org"
+                className="ml-2"
+                style={{ height: "21px" }}
+              >
+                <Image
+                  height="21px"
+                  width="21px"
+                  src="/images/next.ico"
+                  alt="next-icon"
+                />
+              </a>
+              <a
+                href="https://www.apollographql.com/"
+                className="ml-2 bg-white rounded-full"
+                style={{ height: "21px" }}
+              >
+                <Image
+                  height="21px"
+                  width="21px"
+                  src="/images/apollo.png"
+                  alt="apollo-gql-icon"
+                />
+              </a>
+              <a
+                href="https://www.graphcms.com"
+                className="ml-2"
+                style={{ height: "21px" }}
+              >
+                <Image
+                  height="21px"
+                  width="21px"
+                  src="/images/graphcms.png"
+                  alt="graphcms-icon"
+                />
+              </a>
+              <a
+                href="https://www.vercel.com"
+                className="ml-2"
+                style={{ height: "21px" }}
+              >
+                <Image
+                  height="21px"
+                  width="21px"
+                  src="/images/vercel.ico"
+                  alt="vercel-icon"
+                />
+              </a>
+            </div>
           </div>
         </article>
-        <div className="text-gray-500 flex xs:mt-4 sm:mt-1">
+        <div className="text-gray-500 flex mt-4 sm:mt-1">
           <a href="https://www.youtube.com/c/Chumbers" className="icon">
             <FiYoutube />
           </a>

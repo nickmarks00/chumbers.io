@@ -7,7 +7,7 @@ export const getFeatured = async () => {
       query {
         posts(
           first: 5
-          orderBy: updatedAt_DESC
+          orderBy: publishedAt_DESC
           where: { featuredPost: true }
         ) {
           category {
@@ -17,7 +17,7 @@ export const getFeatured = async () => {
             }
             slug
           }
-          updatedAt
+          publishedAt
           featuredPost
           heroImage {
             url
@@ -28,9 +28,14 @@ export const getFeatured = async () => {
           tags {
             name
             slug
+            post {
+              id
+            }
           }
           excerpt
-          id
+          content {
+            markdown
+          }
         }
       }
     `,
@@ -64,10 +69,10 @@ export const getLatest = async () => {
             name
             slug
           }
+          excerpt
           content {
             markdown
           }
-          id
         }
       }
     `,

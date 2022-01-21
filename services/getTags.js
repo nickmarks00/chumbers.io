@@ -25,11 +25,6 @@ export const getTagsFull = async () => {
           name
           slug
           updatedAt
-          tagPicture {
-            alternate
-            attribution
-            url
-          }
           post {
             id
           }
@@ -77,10 +72,7 @@ export const getSingleTag = async (slug) => {
             content {
               markdown
             }
-          }
-          tagPicture {
-            alternate
-            url
+            excerpt
           }
         }
       }

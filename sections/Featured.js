@@ -2,7 +2,16 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { BsArrowRightCircleFill } from "react-icons/bs";
+import {
+  BsArrowRightCircleFill,
+  BsFillCalendarFill,
+  BsClock,
+} from "react-icons/bs";
+import moment from "moment";
+
+import { getReadingTime } from "../services/getReadingTime";
+
+import Tag from "../components/Tag";
 
 const Featured = ({ featured }) => {
   return (
@@ -16,11 +25,13 @@ const Featured = ({ featured }) => {
       </div>
       <div className="w-full gap-8 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10">
         {featured.map((post, idx) => {
+          const slicedTags =
+            post.tags.length > 2 ? post.tags.slice(0, 2) : post.tags;
           return (
             <Link href={`/content/${post.slug}`} key={idx}>
               <a
                 className="featured-card rounded-lg shadow-lg transform duration-500 ease-out hover:-translate-y-2 hover:shadow-xl cursor-pointer overflow-hidden bg-white"
-                style={{ height: "30rem" }}
+                style={{ minHeight: "34rem" }}
               >
                 <div className="h-3/5">
                   <span className="overlay-block bg-teal opacity-60 hidden h-3/5 w-full absolute z-10 text-left  overflow-hidden"></span>
@@ -42,18 +53,30 @@ const Featured = ({ featured }) => {
                     />
                   </div>
                 </div>
-                <header className="text-left mx-1">
-                  <h5 className="font-display text-md font-bold my-1 border-b border-gray-300">
-                    {post.title}
-                  </h5>
-                  <p className="text-xs">{post.excerpt}</p>
+                <header className="text-left mx-2 flex flex-col justify-between h-2/5 py-1">
+                  <div>
+                    <h5 className="font-display text-md font-bold my-1 border-b border-gray-300 post-preview l2">
+                      {post.title}
+                    </h5>
+                    <div className="flex mt-3 md:items-center items-start mb-1">
+                      <div className="flex flex-row md:mb-0 mb-2 mr-2">
+                        <BsFillCalendarFill className="mr-2" />
+                        <p className="text-xs">
+                          {moment(post.publishedAt).format("MMM DD, YYYY")}
+                        </p>
+                      </div>
+                      <div className="flex flex-row">
+                        <BsClock className="md:mx-2 mr-2" />
+                        <p className="text-xs">
+                          {getReadingTime(post.content.markdown)} min. read
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-xs post-preview l4">{post.excerpt}</p>
+                  </div>
                   <div className="flex flex-wrap my-2 text-xs ">
-                    {post.tags.map((tag, idx) => {
-                      return (
-                        <Link href={`/tags/${tag.slug}`} key={idx}>
-                          <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition transform duration-500 hover:text-white hover:border hover:border-off-black lowercase">{`#${tag.name}`}</a>
-                        </Link>
-                      );
+                    {slicedTags.map((tag, idx) => {
+                      return <Tag tag={tag} idx={idx} />;
                     })}
                   </div>
                 </header>

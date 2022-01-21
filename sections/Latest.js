@@ -4,6 +4,9 @@ import Image from "next/image";
 import moment from "moment";
 import { BsFillCalendarFill, BsClock } from "react-icons/bs";
 
+import { getReadingTime } from "../services/getReadingTime";
+import Tag from "../components/Tag";
+
 const Latest = ({ latest }) => {
   return (
     <section className="mt-8 text-center col-span-2">
@@ -16,9 +19,14 @@ const Latest = ({ latest }) => {
       </div>
       <div className="flex flex-col mt-3">
         {latest.map((post, idx) => {
+          const slicedTags =
+            post.tags.length > 3 ? post.tags.slice(0, 3) : post.tags;
           return (
             <Link key={idx} href={`/content/${post.slug}`}>
-              <a className="flex justify-between rounded-lg shadow-lg transform duration-500 ease-out bg-white hover:shadow-xl hover:bg-gray-200 cursor-pointer overflow-hidden mb-3 h-40">
+              <a
+                className="flex justify-between rounded-lg shadow-lg transform duration-500 ease-out bg-white hover:shadow-xl hover:bg-gray-200 cursor-pointer overflow-hidden mb-3"
+                style={{ minHeight: "14rem" }}
+              >
                 <aside className="flex flex-col w-3/5 text-left mt-3 pl-3 pr-2">
                   <h3 className="font-display text-xl font-bold overflow-hidden truncate">
                     {post.title}
@@ -32,12 +40,19 @@ const Latest = ({ latest }) => {
                     </div>
                     <div className="flex flex-row">
                       <BsClock className="md:mx-2 mr-2" />
-                      <p className="text-xs">3 min. read</p>
+                      <p className="text-xs">
+                        {getReadingTime(post.content.markdown)} min. read
+                      </p>
                     </div>
                   </div>
                   <article className="text-xs mt-3 post-preview l3">
-                    {post.content.markdown}
+                    {post.excerpt}
                   </article>
+                  <div className="flex text-xs mt-2">
+                    {slicedTags.map((tag, idx) => {
+                      return <Tag tag={tag} idx={idx} />;
+                    })}
+                  </div>
                 </aside>
                 <div className="w-48">
                   <div className="w-full h-full relative">

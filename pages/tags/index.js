@@ -2,7 +2,6 @@ import React from "react";
 import { getTagsFull } from "../../services/getTags";
 
 import LinkedMeta from "../../sections/LinkedMeta";
-import Seo from "../../components/SEO";
 
 const AllTags = ({ tags }) => {
   return (

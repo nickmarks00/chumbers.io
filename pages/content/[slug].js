@@ -17,6 +17,8 @@ import { FiTwitter, FiFacebook, FiLinkedin } from "react-icons/fi";
 import { getPostPaths, getSinglePost } from "../../services/getPosts";
 import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
+import Tag from "../../components/Tag";
+import { getReadingTime } from "../../services/getReadingTime";
 
 import TableOfContents from "../../components/TableOfContents";
 import Loader from "../../components/Loader";
@@ -72,40 +74,24 @@ const Content = ({ post }) => {
 
           <section className="flex flex-col items-center text-xs w-3/5 mx-auto items-center">
             <div className="flex flex-col sm:flex-row my-2">
-              <article className="flex py-1 mt-1">
+              <article className="flex items-center py-1 mt-1 mr-4">
                 <BsFillCalendarFill className="mr-1" />
-                <p className="mr-2">
-                  {`Updated: ${moment(post.updatedAt).format("MMM DD, YYYY")}`}
-                </p>
-                <BsFillCalendarFill className="mr-1" />
-                <p className="mr-2">
-                  {`Published: ${moment(post.publishedAt).format(
-                    "MMM DD, YYYY"
-                  )}`}
-                </p>
+                {moment(post.publishedAt).format("MMM DD, YYYY")}
               </article>
-              <article className="flex py-1 mt-1">
+              <article className="flex items-center py-1 mt-1">
                 <BsClock className="mr-1" />
-                <p>3 min. read</p>
+                <p>{getReadingTime(post.content.markdown)} min. read</p>
               </article>
             </div>
-            {post.course && (
-              <Link href={`/courses/${post.course.slug}`}>
-                <a className="mb-6 rounded-md bg-blue-500 transition-200 hover:text-white p-2 text-bold text-md">
-                  {post.course.courseTitle}
-                </a>
+            {post.series && (
+              <Link href={`/series/${post.series.slug}`}>
+                <a className="h-10 px-2 py-3 mr-1 my-auto flex items-center rounded-md border-2 border-blue-500 transition transform duration-500 hover:text-white hover:bg-blue-500 font-bold  mb-4">{`${post.series.seriesTitle}`}</a>
               </Link>
             )}
             <article className="flex flex-wrap w-3/5 justify-center">
               {post.tags.length > 0 &&
                 post.tags.map((tag, idx) => {
-                  return (
-                    <Link href={`/tags/${tag.slug}`} key={idx}>
-                      <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition  duration-300 hover:text-white  min-w-max">
-                        {`#${tag.name}`}
-                      </a>
-                    </Link>
-                  );
+                  return <Tag tag={tag} idx={idx} />;
                 })}
             </article>
           </section>
@@ -123,7 +109,7 @@ const Content = ({ post }) => {
           </div>
         </section>
 
-        {post.course && (
+        {post.series && (
           <section
             className={`justify-between items-end flex my-16 text-sm text-gray-600 xl:mx-auto md:mx-28 xs:mx-3 ${
               !post.prevPost && "flex-row-reverse"
@@ -146,7 +132,7 @@ const Content = ({ post }) => {
                 </a>
               </Link>
             )}
-            {!post.nextPost && !post.course.isCompleted && (
+            {!post.nextPost && !post.series.isCompleted && (
               <a
                 className=" w-48 flex flex-col items-end text-right text-gray-400 "
                 disabled

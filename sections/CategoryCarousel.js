@@ -39,6 +39,7 @@ export const CategoryCarousel = ({ categories }) => {
                 src={category.categoryPicture.url}
                 alt={category.categoryPicture.alternate}
                 layout="fill"
+                priority
                 quality="50"
                 objectFit="cover"
                 className="h-full object-cover absolute  z-50"

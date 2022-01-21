@@ -8,7 +8,7 @@ module.exports = {
     "./pages/content.{js,ts,jsx,tsx}",
     "./pages/categories.{js,ts,jsx,tsx}",
     "./pages/tags.{js,ts,jsx,tsx}",
-    "./pages/courses.{js,ts,jsx,tsx}",
+    "./pages/series.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {

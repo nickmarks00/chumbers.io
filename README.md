@@ -2,7 +2,7 @@
 
 This is a website I made in the summer of 2021 to host a collection of essays, posts and other content I wrote and am writing.
 
-[![View the deployed site](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://chumbers.io)
+[View the site](https://chumbers.io)
 
 Make and run a local copy -
 

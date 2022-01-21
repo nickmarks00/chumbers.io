@@ -12,7 +12,16 @@ import {
 } from "react-icons/bs";
 // import { BiDownArrow, BiUpArrow } from "react-icons/bi"
 
-const LinkedContent = ({ name, picture, posts, isCategory, mdx }) => {
+import { getReadingTime } from "../services/getReadingTime";
+import GradientGenerator from "../components/GradientGenerator";
+
+const LinkedContent = ({
+  name,
+  picture,
+  posts,
+  isCategory,
+  description = null,
+}) => {
   return (
     <>
       <Head>
@@ -24,8 +33,8 @@ const LinkedContent = ({ name, picture, posts, isCategory, mdx }) => {
         />
       </Head>
       <div className="z-0">
-        {picture && (
-          <div className="h-72">
+        <div className="h-72">
+          {picture ? (
             <div className="relative w-full h-full">
               <Image
                 src={picture.url}
@@ -37,21 +46,23 @@ const LinkedContent = ({ name, picture, posts, isCategory, mdx }) => {
                 objectFit="cover"
               />
             </div>
-          </div>
-        )}
+          ) : (
+            <GradientGenerator />
+          )}
+        </div>
 
         <main className="z-50 mx-10 my-10">
           <header className="flex text-center items-center text-white">
             <h1 className="font-display text-3xl underline--magical font-bold">
-              {isCategory ? `Category: ${name}` : `#${name.toLowerCase()}`}
+              {isCategory ? `${name.toUpperCase()}` : `#${name.toLowerCase()}`}
             </h1>
             <h3 className=" ml-2 font-display text-xl italic text-gray-200 ">
               {isCategory
                 ? `   -   ${posts.length} relevant post${
-                    posts.length > 1 ? "s" : ""
+                    posts.length != 1 ? "s" : ""
                   }`
                 : `   -   ${posts.length} tagged reference${
-                    posts.length > 1 ? "s" : ""
+                    posts.length != 1 ? "s" : ""
                   }`}
             </h3>
           </header>
@@ -73,11 +84,16 @@ const LinkedContent = ({ name, picture, posts, isCategory, mdx }) => {
               <p className="ml-2">Post Duration</p>
             </button>
           </div> */}
+            {description && (
+              <blockquote className="px-2 my-4 py-2 font-display pl-4 border-l-4 border-white italic bg-teal rounded-sm text-md">
+                {description}
+              </blockquote>
+            )}
+
             <div className="flex flex-col mt-4">
               {posts.map((post, idx) => {
-                const { featuredPost, title, updatedAt, content } = post;
-
-                const postMdx = mdx[idx];
+                const { featuredPost, title, updatedAt, content, excerpt } =
+                  post;
 
                 return (
                   <Link href={`/content/${post.slug}`} key={idx}>
@@ -94,18 +110,18 @@ const LinkedContent = ({ name, picture, posts, isCategory, mdx }) => {
                             </p>
                             <p className="flex mx-2 items-center">
                               <BsClock className="mr-2" />
-                              {`3 min. read`}
+                              {`${getReadingTime(content.markdown)} min. read`}
                             </p>
                             {featuredPost && (
                               <p className="flex mx-2 items-center">
                                 <BsFillCheckSquareFill className="mr-2 text-green-500" />
-                                Featured post
+                                Featured
                               </p>
                             )}
                           </div>
                         </div>
                         <p className="font-body text-sm post-preview l4 my-2 mx-5">
-                          <MDXRemote {...postMdx} />
+                          {excerpt}
                         </p>
                       </section>
                     </a>

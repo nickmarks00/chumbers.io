@@ -1,13 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 import LinkedContent from "../../sections/LinkedContent";
-import { mdxSerializer } from "../../services/mdxSerializer";
 import Loader from "../../components/Loader";
 import Seo from "../../components/SEO";
 
 import { getSingleTag, getTagPaths } from "../../services/getTags";
 
-const Tag = ({ tag, mdx }) => {
+const Tag = ({ tag }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <Loader />;
@@ -21,10 +20,9 @@ const Tag = ({ tag, mdx }) => {
       />
       <LinkedContent
         name={tag.name}
-        picture={tag.tagPicture}
+        picture={null}
         posts={tag.post}
-        isCategory={true}
-        mdx={mdx}
+        isCategory={false}
       />
     </>
   );
@@ -35,17 +33,9 @@ export default Tag;
 export async function getStaticProps({ params }) {
   const tag = await getSingleTag(params.slug);
 
-  const mdx = await Promise.all(
-    tag.post.map(async (post) => {
-      const serializedMdx = await mdxSerializer(post.content.markdown);
-      return serializedMdx;
-    })
-  );
-
   return {
     props: {
       tag: tag,
-      mdx,
     },
   };
 }

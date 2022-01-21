@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import styled from "styled-components";
 
+import Tag from "../components/Tag";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
@@ -33,15 +33,9 @@ const TagsList = ({ tags }) => {
           </a>
         </Link>
       </div>
-      <article className="flex flex-wrap text-off-black my-3   h-64 md:h-80">
+      <article className="flex flex-wrap content-start text-off-black mt-4 mb-3 h-64 md:h-80 text-sm">
         {currentTags.map((tag, idx) => {
-          return (
-            <Link href={`/tags/${tag.slug}`} key={idx}>
-              <a className="p-1 mr-1 mt-1 rounded-md bg-teal transition transform duration-300 hover:text-white text-sm lowercase flex items-center">
-                {`#${tag.name}`}
-              </a>
-            </Link>
-          );
+          return <Tag tag={tag} idx={idx} />;
         })}
       </article>
       <div className="absolute bottom-5 left-0 flex w-full justify-items-center text-teal flex-none mb-4 mt-12 px-10">

@@ -3,12 +3,9 @@ import { useRouter } from "next/router";
 import LinkedContent from "../../sections/LinkedContent";
 import Loader from "../../components/Loader";
 
-import {
-  getSingleCategory,
-  getCategoryPaths,
-} from "../../services/getCategories";
+import { getSingleSeries, getSeriesPaths } from "../../services/getSeries";
 
-const Category = ({ category }) => {
+const Series = ({ series }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <Loader />;
@@ -16,31 +13,32 @@ const Category = ({ category }) => {
 
   return (
     <LinkedContent
-      name={category.name}
-      picture={category.categoryPicture}
-      posts={category.posts}
+      name={series.seriesTitle}
+      picture={series.seriesImage}
+      posts={series.posts}
+      description={series.overview}
       isCategory={true}
     />
   );
 };
 
-export default Category;
+export default Series;
 
 export async function getStaticProps({ params }) {
-  const category = await getSingleCategory(params.slug);
+  const series = await getSingleSeries(params.slug);
 
   return {
     props: {
-      category: category,
+      series: series,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const categories = await getCategoryPaths();
+  const allSeries = await getSeriesPaths();
 
-  const paths = categories.map((category) => ({
-    params: { slug: category.node.slug },
+  const paths = allSeries.map((series) => ({
+    params: { slug: series.node.slug },
   }));
 
   return {

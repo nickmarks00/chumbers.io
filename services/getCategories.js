@@ -79,6 +79,7 @@ export const getSingleCategory = async (slug) => {
             content {
               markdown
             }
+            excerpt
           }
           categoryPicture {
             alternate
