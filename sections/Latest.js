@@ -50,7 +50,11 @@ const Latest = ({ latest }) => {
                   </article>
                   <div className="flex text-xs mt-2">
                     {slicedTags.map((tag, idx) => {
-                      return <Tag tag={tag} idx={idx} />;
+                      return (
+                        <Link href={`/tags/${tag.slug}`} key={idx}>
+                          <a className="h-10 px-2 py-3 mr-1 my-auto flex items-center rounded-md border-2 border-teal transition transform duration-500 hover:text-white hover:bg-teal font-bold lowercase mb-2">{`#${tag.name}`}</a>
+                        </Link>
+                      );
                     })}
                   </div>
                 </aside>
