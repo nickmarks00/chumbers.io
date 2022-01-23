@@ -27,11 +27,11 @@ const Latest = ({ latest }) => {
                 className="flex justify-between rounded-lg shadow-lg transform duration-500 ease-out bg-white hover:shadow-xl hover:bg-gray-200 cursor-pointer overflow-hidden mb-3"
                 style={{ minHeight: "14rem" }}
               >
-                <aside className="flex flex-col w-3/5 text-left mt-3 pl-3 pr-2">
+                <aside className="flex flex-col w-full sm:w-3/5 text-left mt-3 pl-3 pr-2">
                   <h3 className="font-display text-xl font-bold overflow-hidden truncate">
                     {post.title}
                   </h3>
-                  <div className="flex md:flex-row flex-col mt-3 md:items-center items-start">
+                  <div className="flex mt-3 md:items-center items-start">
                     <div className="flex flex-row md:mb-0 mb-2">
                       <BsFillCalendarFill className="mr-2" />
                       <p className="text-xs">
@@ -39,7 +39,7 @@ const Latest = ({ latest }) => {
                       </p>
                     </div>
                     <div className="flex flex-row">
-                      <BsClock className="md:mx-2 mr-2" />
+                      <BsClock className="mx-2 mr-2" />
                       <p className="text-xs">
                         {getReadingTime(post.content.markdown)} min. read
                       </p>
@@ -48,7 +48,7 @@ const Latest = ({ latest }) => {
                   <article className="text-xs mt-3 post-preview l3">
                     {post.excerpt}
                   </article>
-                  <div className="flex text-xs mt-2">
+                  <div className="flex flex-wrap text-xs mt-2">
                     {slicedTags.map((tag, idx) => {
                       return (
                         <Link href={`/tags/${tag.slug}`} key={idx}>
@@ -58,7 +58,7 @@ const Latest = ({ latest }) => {
                     })}
                   </div>
                 </aside>
-                <div className="w-48">
+                <div className="hidden sm:inline w-48">
                   <div className="w-full h-full relative">
                     <Image
                       src={post.heroImage.url}

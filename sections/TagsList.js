@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Tag from "../components/Tag";
@@ -7,7 +7,8 @@ import { BsArrowRightCircleFill } from "react-icons/bs";
 
 const TagsList = ({ tags }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const tagsPerPage = 21;
+
+  const [tagsPerPage, setTagsPerPage] = useState(0);
 
   const indexOfLastTag = currentPage * tagsPerPage;
   const indexOfFirstTag = indexOfLastTag - tagsPerPage;
@@ -19,6 +20,28 @@ const TagsList = ({ tags }) => {
     const del = isLeft ? -1 : 1;
     setCurrentPage(currentPage + del);
   };
+
+  const updateTags = () => {
+    window.addEventListener("resize", function () {
+      setTagsPerPage(
+        window.innerWidth < 768 ? (window.innerWidth < 410 ? 11 : 13) : 21
+      );
+    });
+  };
+
+  useEffect(() => {
+    if (tagsPerPage === 0) {
+      setTagsPerPage(
+        window.innerWidth < 768 ? (window.innerWidth < 410 ? 11 : 13) : 21
+      );
+    } else {
+      updateTags();
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateTags);
+    };
+  });
 
   return (
     <section className="bg-white rounded-md mt-4 md:mt-20 px-3 py-3 overflow-auto relative mb-3 h-96 sm:h-72 md:h-auto flex flex-col justify-items-start">

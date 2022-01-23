@@ -58,7 +58,7 @@ const Content = ({ post }) => {
           />
         </div>
       </div>
-      <main className="bg-white px-10 py-10">
+      <main className="bg-white p-5 sm:p-10">
         <header className="text-center flex flex-col justify-items-center items-center post-header">
           <aside className="flex justify-center w-full whitespace-pre text-gray-400 ">
             <Link href="/">
@@ -72,7 +72,7 @@ const Content = ({ post }) => {
           </aside>
           <h1 className="text-5xl font-display capitalize">{post.title}</h1>
 
-          <section className="flex flex-col items-center text-xs w-3/5 mx-auto items-center">
+          <section className="flex flex-col items-center text-xs w-full sm:w-4/5 md:w-2/3 mx-auto items-center">
             <div className="flex flex-col sm:flex-row my-2">
               <article className="flex items-center py-1 mt-1 mr-4">
                 <BsFillCalendarFill className="mr-1" />
@@ -88,7 +88,7 @@ const Content = ({ post }) => {
                 <a className="h-10 px-2 py-3 mr-1 my-auto flex items-center rounded-md border-2 border-blue-500 transition transform duration-500 hover:text-white hover:bg-blue-500 font-bold  mb-4">{`${post.series.seriesTitle}`}</a>
               </Link>
             )}
-            <article className="flex flex-wrap w-3/5 justify-center">
+            <article className="flex flex-wrap w-full sm:w-4/5 md:w-3/5 justify-center">
               {post.tags.length > 0 &&
                 post.tags.map((tag, idx) => {
                   return (

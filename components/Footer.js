@@ -19,7 +19,7 @@ const Footer = ({ categories }) => {
         />
         <FooterColumn key="more" heading="more" list={lowerNavigation[2][1]} />
         <FooterColumn key="categories" heading="categories" list={categories} />
-        <div className="col-span-2 flex flex-col text-sm">
+        <div className="col-span-3 md:col-span-2 items-center flex flex-col text-sm mb-4">
           <h4 className="text-gray-200 uppercase font-semibold">
             Subscribe to receive updates
           </h4>
@@ -39,7 +39,7 @@ const Footer = ({ categories }) => {
         </div>
       </div>
       <div className="sm:mt-7 md:mt-auto pt-6 pb-8 sm:flex sm:justify-between border-t border-gray-100 xs:block">
-        <article className="text-white font-medium xs:mb-4 sm:mb-3 flex flex-col md:flex-row items-center justify-start">
+        <article className="text-white font-medium xs:mb-4 sm:mb-3 flex flex-col sm:flex-row items-center justify-start">
           <span>&copy; {new Date().getFullYear()} chumbers.io.</span>
           <div className="flex items-center md:ml-2 justify-start">
             Built with{" "}
@@ -95,7 +95,7 @@ const Footer = ({ categories }) => {
             </div>
           </div>
         </article>
-        <div className="text-gray-500 flex mt-4 sm:mt-1">
+        <div className="text-gray-500 flex mt-9 sm:mt-1 justify-center">
           <a href="https://www.youtube.com/c/Chumbers" className="icon">
             <FiYoutube />
           </a>
@@ -116,7 +116,7 @@ const Footer = ({ categories }) => {
 
 const FooterColumn = ({ heading, list }) => {
   return (
-    <div key={heading} className="flex flex-col pl-4 justify-start">
+    <div key={heading} className="flex flex-col sm:pl-4 justify-start">
       <h4 className="text-gray-200 text-sm uppercase font-semibold">
         {heading}
       </h4>

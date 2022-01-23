@@ -51,7 +51,7 @@ const LinkedContent = ({
           )}
         </div>
 
-        <main className="z-50 mx-10 my-10">
+        <main className="z-50 m-3 sm:m-2 md:m-10">
           <header className="flex text-center items-center text-white">
             <h1 className="font-display text-3xl underline--magical font-bold">
               {isCategory ? `${name.toUpperCase()}` : `#${name.toLowerCase()}`}

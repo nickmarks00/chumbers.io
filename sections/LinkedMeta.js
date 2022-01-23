@@ -16,7 +16,7 @@ const LinkedMeta = ({ seo, title, nodes }) => {
         <div className="h-72">
           <GradientGenerator />
         </div>
-        <div className="mx-10 my-10">
+        <div className="m-3 sm:m-5 md:m-10">
           <header className="flex text-center items-center text-white">
             <h1 className="font-display text-3xl underline--magical font-bold">
               {title}
@@ -39,28 +39,24 @@ const LinkedMeta = ({ seo, title, nodes }) => {
                     }
                     key={idx}
                   >
-                    <a className="font-display border-b-2 border-gray-200  text-xl transition duration-200 hover:bg-gray-200  cursor-pointer bg-white flex justify-between h-24 overflow-hidden">
+                    <a className="font-display border-b-2 border-gray-200  text-xl transition duration-200 hover:bg-gray-200  cursor-pointer bg-white flex justify-between h-28 sm:h-24 overflow-hidden">
                       <section className="p-3">
                         <header>
                           <h3>{name}</h3>
                         </header>
                         <div className="flex text-sm text-gray-600 mt-2 align-items justify-between">
-                          <div className="flex">
+                          <div className="flex flex-col sm:flex-row">
                             <p className="flex mx-2 items-center">
                               <BsFillCalendarFill className="mr-2" />{" "}
                               {`Last updated: ${moment(updatedAt).format(
                                 "MMM DD, YYYY"
                               )}`}
                             </p>
-                            {node.categoryTheme && (
-                              <p className="flex mx-2 items-center">
-                                {`${node.categoryTheme.hex}`}
-                              </p>
-                            )}
+
                             {title === "Categories" ? (
-                              <p className="mx-2">{`${node.posts.length} post${
-                                node.posts.length != 1 ? "s" : ""
-                              }`}</p>
+                              <p className="mx-2 my-2 sm:my-0">{`${
+                                node.posts.length
+                              } post${node.posts.length != 1 ? "s" : ""}`}</p>
                             ) : (
                               <p className="mx-2">{`${node.post.length} post${
                                 node.post.length != 1 ? "s" : ""

@@ -5,7 +5,7 @@ import ModalImage from "react-modal-image";
 const PostImage = ({ src, altText }) => {
   return (
     <figure className="my-4">
-      <div className="overflow-hidden h-80 post-image relative cursor-pointer">
+      <div className="overflow-hidden max-h-80 post-image relative cursor-pointer">
         <ModalImage
           small={src}
           large={src}
