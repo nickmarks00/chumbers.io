@@ -7,7 +7,7 @@ export const getFeatured = async () => {
       query {
         posts(
           first: 5
-          orderBy: publishedAt_DESC
+          orderBy: createdAt_DESC
           where: { featuredPost: true }
         ) {
           category {
@@ -17,7 +17,7 @@ export const getFeatured = async () => {
             }
             slug
           }
-          publishedAt
+          createdAt
           featuredPost
           heroImage {
             url
@@ -48,7 +48,7 @@ export const getLatest = async () => {
   const result = await client.query({
     query: gql`
       query {
-        posts(first: 3, orderBy: updatedAt_DESC) {
+        posts(first: 3, orderBy: createdAt_DESC) {
           category {
             name
             categoryTheme {
@@ -62,7 +62,6 @@ export const getLatest = async () => {
             url
             alternate
           }
-          publishedAt
           slug
           title
           tags {
@@ -76,6 +75,34 @@ export const getLatest = async () => {
         }
       }
     `,
+  });
+
+  return result.data.posts;
+};
+
+export const getRelatedPosts = async (slug, tags) => {
+  const result = await client.query({
+    query: gql`
+      query GetRelatedPosts($slug: String!, $tags: [String!]) {
+        posts(
+          where: { slug_not: $slug, AND: { tags_some: { slug_in: $tags } } }
+          last: 3
+        ) {
+          title
+          heroImage {
+            url
+          }
+          featuredPost
+          excerpt
+          content {
+            markdown
+          }
+          createdAt
+          slug
+        }
+      }
+    `,
+    variables: { slug: slug, tags: tags },
   });
 
   return result.data.posts;

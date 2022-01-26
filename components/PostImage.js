@@ -5,12 +5,12 @@ import ModalImage from "react-modal-image";
 const PostImage = ({ src, altText }) => {
   return (
     <figure className="my-4">
-      <div className="overflow-hidden max-h-80 post-image relative cursor-pointer">
+      <div className="overflow-hidden max-h-80 md:max-h-96 post-image relative cursor-pointer">
         <ModalImage
           small={src}
           large={src}
           alt={altText}
-          className="transition duration-300 ease hover:opacity-70"
+          className="transition duration-300 ease hover:opacity-70 w-screen"
         />
         <FiMaximize2 className="absolute top-3 right-4 text-3xl bg-gray-200 text-off-black p-1 rounded-md transition duration-300 ease-in hover:bg-teal hover:text-white" />
       </div>

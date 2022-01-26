@@ -17,12 +17,14 @@ import { FiTwitter, FiFacebook, FiLinkedin } from "react-icons/fi";
 import { getPostPaths, getSinglePost } from "../../services/getPosts";
 import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
-import Tag from "../../components/Tag";
 import { getReadingTime } from "../../services/getReadingTime";
+import { getRelatedPosts } from "../../services/getTypePosts";
 
+import Tag from "../../components/Tag";
 import TableOfContents from "../../components/TableOfContents";
 import Loader from "../../components/Loader";
 import { mdxSerializer } from "../../services/mdxSerializer";
+import Related from "../../sections/Related";
 
 const Content = ({ post }) => {
   const router = useRouter();
@@ -147,6 +149,10 @@ const Content = ({ post }) => {
             )}
           </section>
         )}
+
+        <section className="my-6">
+          <Related slug={post.slug} tags={post.tags.map((tag) => tag.slug)} />
+        </section>
 
         <section>
           <div className="flex items-center">

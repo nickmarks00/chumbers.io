@@ -35,7 +35,7 @@ const Latest = ({ latest }) => {
                     <div className="flex flex-row md:mb-0 mb-2">
                       <BsFillCalendarFill className="mr-2" />
                       <p className="text-xs">
-                        {moment(post.publishedAt).format("MMM DD, YYYY")}
+                        {moment(post.createdAt).format("MMM DD, YYYY")}
                       </p>
                     </div>
                     <div className="flex flex-row">

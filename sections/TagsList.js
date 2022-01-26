@@ -24,7 +24,7 @@ const TagsList = ({ tags }) => {
   const updateTags = () => {
     window.addEventListener("resize", function () {
       setTagsPerPage(
-        window.innerWidth < 768 ? (window.innerWidth < 410 ? 11 : 13) : 21
+        window.innerWidth < 768 ? (window.innerWidth < 410 ? 10 : 13) : 21
       );
     });
   };
@@ -32,7 +32,7 @@ const TagsList = ({ tags }) => {
   useEffect(() => {
     if (tagsPerPage === 0) {
       setTagsPerPage(
-        window.innerWidth < 768 ? (window.innerWidth < 410 ? 11 : 13) : 21
+        window.innerWidth < 768 ? (window.innerWidth < 410 ? 10 : 13) : 21
       );
     } else {
       updateTags();
@@ -65,7 +65,7 @@ const TagsList = ({ tags }) => {
           );
         })}
       </article>
-      <div className="absolute bottom-5 left-0 flex w-full justify-items-center text-teal flex-none mb-4 mt-12 px-10">
+      <div className="absolute bottom-2 left-0 flex w-full justify-items-center text-teal flex-none mb-4 mt-12 px-10">
         <button
           className="mx-auto pagination"
           onClick={() => paginate(true)}

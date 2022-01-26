@@ -53,7 +53,7 @@ const Featured = ({ featured }) => {
                     />
                   </div>
                 </div>
-                <header className="text-left mx-2 flex flex-col justify-between h-2/5 py-1">
+                <header className="text-left mx-2 flex flex-col justify-between min-h-2/5 py-1">
                   <div>
                     <h5 className="font-display text-md font-bold my-1 border-b border-gray-300 post-preview l2">
                       {post.title}
@@ -62,7 +62,7 @@ const Featured = ({ featured }) => {
                       <div className="flex flex-row md:mb-0 mb-2 mr-2">
                         <BsFillCalendarFill className="mr-2" />
                         <p className="text-xs">
-                          {moment(post.publishedAt).format("MMM DD, YYYY")}
+                          {moment(post.createdAt).format("MMM DD, YYYY")}
                         </p>
                       </div>
                       <div className="flex flex-row">
