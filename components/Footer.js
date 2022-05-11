@@ -137,7 +137,7 @@ const FooterColumn = ({ heading, list }) => {
             <a
               className=" cursor-pointer text-gray-200 capitalize text-sm mb-1"
               role="menuitem"
-              href="/resume.pdf"
+              href="/NicholasMarks_resume.pdf"
               target="_blank"
               rel="noreferrer"
               download

@@ -134,7 +134,7 @@ const LowerNavDropdown = ({ list, name }) => {
               <a
                 className=" py-2 text-sm text-center capitalize block cursor-pointer  dropdown-item max-w-6 "
                 role="menuitem"
-                href="/resume.pdf"
+                href="/NicholasMarks_resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 download
