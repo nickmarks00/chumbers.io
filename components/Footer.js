@@ -117,19 +117,25 @@ const Footer = ({ categories }) => {
 const FooterColumn = ({ heading, list }) => {
   return (
     <div key={heading} className="flex flex-col sm:pl-4 justify-start">
-      <h4 className="text-gray-200 text-sm uppercase font-semibold">
+      <h4
+        className="text-gray-200 text-sm uppercase font-semibold"
+        key={`h4-${heading}`}
+      >
         {heading}
       </h4>
       {list.map((row, index) => (
         <>
           {row.name !== "resume" ? (
             <Link
-              key={index}
+              key={`link-${index}`}
               href={
                 heading === "categories" ? `/categories/${row.slug}` : row.slug
               }
             >
-              <a className="cursor-pointer text-gray-200 capitalize text-sm mb-1">
+              <a
+                className="cursor-pointer text-gray-200 capitalize text-sm mb-1"
+                key={`a${index}`}
+              >
                 {row.name}
               </a>
             </Link>
@@ -143,9 +149,11 @@ const FooterColumn = ({ heading, list }) => {
               download
               key={index}
             >
-              <span className="flex items-center">
-                <p className="mr-2">{row.name}</p>
-                <BsDownload />
+              <span className="flex items-center" key={`s-${heading}`}>
+                <p className="mr-2" key={`p${heading}`}>
+                  {row.name}
+                </p>
+                <BsDownload key={`download-${heading}`} />
               </span>
             </a>
           )}
