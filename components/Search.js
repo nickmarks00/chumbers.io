@@ -17,6 +17,7 @@ const Search = ({ className }) => {
 
         const res = await fetch("/api/search?" + params);
         const result = await res.json();
+        console.log(result);
         setHits(result["posts"]);
       }
     }, 500),

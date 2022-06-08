@@ -11,7 +11,7 @@ const UnderConstruction = () => {
           alt="under construction graphic"
           width="200px"
           height="200px"
-          style={{ height: "50%", width: "50%", margin: "0 auto" }}
+          className={{ height: "50%", width: "50%", margin: "0 auto" }}
         />
       </div>
       <h1 className="font-display text-gray-200 font-bold text-2xl mt-8">

@@ -69,7 +69,7 @@ export const getSinglePost = async (slug) => {
 export const getSinglePostById = async (id) => {
   const result = await client.query({
     query: gql`
-      query GetPost($id: String!) {
+      query GetPostById($id: ID!) {
         post(where: { id: $id }) {
           title
           slug
