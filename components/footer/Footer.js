@@ -5,8 +5,8 @@ import { FiYoutube, FiLinkedin, FiGithub } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 
-import { lowerNavigation } from "../data/lowerNavigation";
-import InputField from "./InputField";
+import { lowerNavigation } from "../../data/lowerNavigation";
+import NewsletterSubscribe from "./NewsletterSubscribe";
 
 const Footer = ({ categories }) => {
   return (
@@ -19,24 +19,7 @@ const Footer = ({ categories }) => {
         />
         <FooterColumn key="more" heading="more" list={lowerNavigation[2][1]} />
         <FooterColumn key="categories" heading="categories" list={categories} />
-        <div className="col-span-3 md:col-span-2 items-center flex flex-col text-sm mb-4">
-          <h4 className="text-gray-200 uppercase font-semibold">
-            Subscribe to receive updates
-          </h4>
-          <p className="text-gray-200">
-            Get the latest posts, articles and series sent directly to your
-            inbox
-          </p>
-          <InputField
-            type="email"
-            label="Notify me (coming soon...)"
-            placeholder="E-mail"
-            btnLabel="send"
-            isEmail={true}
-            id="footerNotify"
-            className="text-gray-400"
-          />
-        </div>
+        <NewsletterSubscribe />
       </div>
       <div className="sm:mt-7 md:mt-auto pt-6 pb-8 sm:flex sm:justify-between border-t border-gray-100 xs:block">
         <article className="text-white font-medium xs:mb-4 sm:mb-3 flex flex-col sm:flex-row items-center justify-start">

@@ -8,6 +8,11 @@ const InputField = ({
   isEmail,
   id,
   className,
+  action,
+  onChange,
+  onKeyUp,
+  onSubmit,
+  disabled = false,
 }) => {
   return (
     <div
@@ -17,7 +22,7 @@ const InputField = ({
     >
       <input className="c-checkbox rounded-md" type="checkbox" id={id} />
       <div className="c-formContainer">
-        <form className="c-form rounded-md" action="">
+        <form className="c-form rounded-md" action={action}>
           <input
             className="c-form__input"
             placeholder={placeholder}
@@ -28,13 +33,16 @@ const InputField = ({
                 : undefined
             }
             required
-            disabled
+            disabled={disabled}
+            onChange={onChange}
+            onKeyUp={onKeyUp}
           />
           <label className="c-form__buttonLabel" htmlFor={id}>
             <button
               className="c-form__button btn-black mr-1 mb-2"
               type="button"
               name={id}
+              onSubmit={onSubmit}
             >
               {btnLabel}
             </button>
