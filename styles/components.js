@@ -123,7 +123,7 @@ const components = {
     );
   },
   p: ({ children, props }) => (
-    <p className="post-paragraph leading-7 mt-4 mb-4 font-md" {...props}>
+    <p className="post-paragraph font-display mt-4 mb-4 font-md" {...props}>
       {children}
     </p>
   ),
