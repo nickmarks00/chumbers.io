@@ -66,6 +66,36 @@ export const getSinglePost = async (slug) => {
   return result.data.post;
 };
 
+export const getSinglePostById = async (id) => {
+  const result = await client.query({
+    query: gql`
+      query GetPost($id: String!) {
+        post(where: { id: $id }) {
+          title
+          slug
+          excerpt
+          publishedAt
+          category {
+            name
+          }
+          content {
+            markdown
+          }
+          heroImage {
+            url
+          }
+          series {
+            seriesTitle
+          }
+        }
+      }
+    `,
+    variables: { id: id },
+  });
+
+  return result.data.post;
+};
+
 export const getAllPosts = async () => {
   const result = await client.query({
     query: gql`
