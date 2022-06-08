@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useQuery } from "@apollo/client";
 
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 
 import { getCategoriesLink } from "../services/getCategories";
 
