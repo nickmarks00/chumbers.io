@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
+
 import { FiYoutube, FiLinkedin, FiGithub } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 import { lowerNavigation } from "../data/lowerNavigation";
-import InputField from "./InputField";
+import Search from "./Search";
 
 const Navbar = ({ categories }) => {
   const [show, setShow] = useState(false);
@@ -37,16 +38,7 @@ const Navbar = ({ categories }) => {
           key="more"
           list={lowerNavigation[2][1]}
         />
-
-        <InputField
-          className="md:hidden w-screen mx-auto"
-          type="text"
-          label="SEARCH (coming soon...)"
-          placeholder="Browse the site..."
-          btnLabel="search"
-          isEmail={false}
-          id="navbarSearch"
-        />
+        <Search className="md:hidden w-screen mx-auto" />
       </div>
     </nav>
   );
@@ -60,17 +52,7 @@ const UpperNav = ({ setToggle, isToggled }) => {
           <a>chumbers</a>
         </Link>
       </h1>
-      <div className="flex-grow px-2 pb-5 hidden md:flex relative z-10">
-        <InputField
-          type="text"
-          label="SEARCH (coming soon...)"
-          placeholder="Browse the site..."
-          btnLabel="search"
-          isEmail={false}
-          id="navbarSearch"
-          className="text-gray-400"
-        />
-      </div>
+      <Search />
       <div className="flex-shrink-0 text-gray-500 hidden md:flex items-center w-auto px-2 pt-6 pb-2">
         <a href="https://www.youtube.com/c/Chumbers" className="icon">
           <FiYoutube />

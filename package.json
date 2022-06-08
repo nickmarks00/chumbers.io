@@ -23,6 +23,7 @@
     "dompurify": "^2.3.8",
     "dotenv": "^16.0.1",
     "graphql": "^16.2.0",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.29.1",
     "next": "latest",
     "next-mdx-remote": "^3.0.8",
