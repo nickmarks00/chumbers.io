@@ -9,8 +9,8 @@ const about = () => {
         <h2 className="text-2xl font-display font-bold">Hello there.</h2>
         <section>
           <p className="text-md mt-4">
-            My name is Nick. This is a site I've made to house a collection of
-            essays and projects that I've been working on over the years.
+            My name is Nick. This is a site I have made to house a collection of
+            essays and projects that I have been working on over the years.
           </p>
           <p className="text-md mt-4">
             I am currently studying at{" "}
@@ -33,7 +33,7 @@ const about = () => {
           </p>
           <p className="text-md mt-4">
             I love playing sport of any kind, particularly basketball 🏀. My
-            hobbies are many and varied, but currently I'm spending a lot of my
+            hobbies are many and varied, but currently I am spending a lot of my
             time playing piano 🎹, wood-carving 🪵, web development and running
             (
             <a

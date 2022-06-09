@@ -21,7 +21,7 @@ const GradientGenerator = ({ isList = false }) => {
   };
   useEffect(() => {
     generateGrad();
-  }, []);
+  });
 
   return (
     <div id="wrapper" className="h-full relative">

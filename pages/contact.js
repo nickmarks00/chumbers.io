@@ -32,7 +32,7 @@ const contact = () => {
         <section className="flex-col w-full mt-8">
           <form onSubmit={onSubmit}>
             <fieldset className="float-label-field">
-              <label for="txtEmail">Email</label>
+              <label htmlFor="txtEmail">Email</label>
               <input
                 id="txtEmail"
                 type="email"
@@ -43,7 +43,7 @@ const contact = () => {
             </fieldset>
 
             <fieldset className="float-label-field">
-              <label for="subject">Subject</label>
+              <label htmlFor="subject">Subject</label>
               <input
                 id="subject"
                 type="text"
@@ -54,7 +54,7 @@ const contact = () => {
             </fieldset>
 
             <fieldset className="float-label-field">
-              <label for="message">Message</label>
+              <label htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"

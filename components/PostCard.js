@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import Link from "next/link";
+import Image from "next/image";
 import { BsFillCalendarFill, BsClock } from "react-icons/bs";
 
 import { getReadingTime } from "../services/getReadingTime";
@@ -10,11 +11,13 @@ const PostCard = ({ post, isRelated = false, key }) => {
     <Link key={key} href={`/content/${post.slug}`}>
       <a className="flex items-center w-full mb-4 px-8  transition duration-200 hover:bg-gray-200 hover:font-bold hover:text-teal">
         {isRelated && (
-          <div className="w-24 h-full md:w-1/5">
-            <img
+          <div className="relative w-full h-full">
+            <Image
               src={post.heroImage.url}
               alt={post.title}
-              className="align-middle h-full object-cover"
+              quality="30"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
         )}
