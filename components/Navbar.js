@@ -63,7 +63,7 @@ const UpperNav = ({ setToggle, isToggled }) => {
         <a href="https://github.com/nickmarks00" className="icon">
           <FiGithub />
         </a>
-        <a href="mailto:nd.marks00@gmail.com" className="icon">
+        <a href="mailto:nickmarks0000@gmail.com" className="icon">
           <MdOutlineEmail />
         </a>
       </div>

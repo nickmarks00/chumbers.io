@@ -88,7 +88,7 @@ const Footer = ({ categories }) => {
           <a href="https://github.com/nickmarks00" className="icon">
             <FiGithub />
           </a>
-          <a href="mailto:nd.marks00@gmail.com" className="icon">
+          <a href="mailto:nickmarks00@gmail.com" className="icon">
             <MdOutlineEmail />
           </a>
         </div>

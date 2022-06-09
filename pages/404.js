@@ -28,7 +28,7 @@ const NotFoundPage = () => {
           </Link>
 
           <p className="mt-6">Clicked on a broken link?</p>
-          <a href="mailto:nd.marks00@gmail.com" className="bg-white">
+          <a href="mailto:nickmarks00@gmail.com" className="bg-white">
             Contact me
           </a>
         </div>
