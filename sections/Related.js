@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import moment from "moment";
 
 import { getRelatedPosts } from "../services/getTypePosts";

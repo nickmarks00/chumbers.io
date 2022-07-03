@@ -21,7 +21,6 @@ html {
 body {
   height: 100%;
   background-color: $off-black;
-  overflow-x: hidden;
 }
 
 html {
@@ -49,6 +48,14 @@ footer {
 
 nav {
   position: sticky;
+}
+
+ul {
+  list-style-type: disc !important;
+}
+
+ol {
+  list-style-type: decimal !important;
 }
 
 hr {
@@ -102,6 +109,10 @@ button:disabled {
   transition: width 0.3s ease-in-out;
 }
 
+.dropdown-menu-expanded {
+  max-height: 500px;
+}
+
 .dropdown-item:hover::after {
   width: 100%;
 }
@@ -109,6 +120,13 @@ button:disabled {
 @media (max-width: 640px) {
   .dropdown:focus-within ul {
     max-height: 500px;
+    transition: max-height 0.6s ease-in;
+  }
+}
+
+@media (max-width: 640px) {
+  .dropdown:focus-without ul {
+    max-height: 0px;
     transition: max-height 0.6s ease-in;
   }
 }
@@ -471,13 +489,21 @@ button:disabled {
   }
 }
 
-// ~ selects all siblings after the hovered card
-.card:hover ~ .card {
-  transform: translateX(-65px);
+@media (min-width: 640px) {
+  .card {
+    margin-left: -50px;
+  }
+
+  // ~ selects all siblings after the hovered card
+  .card:hover ~ .card {
+    transform: translateX(-80px);
+  }
 }
 
-.card {
-  margin-left: -65px;
+@media (max-width: 640px) {
+  .card {
+    margin: auto 10px;
+  }
 }
 
 // FEATURED POSTS
@@ -727,7 +753,6 @@ code {
 
 .notfound {
   max-width: 520px;
-  width: 100%;
   text-align: center;
 }
 
@@ -758,8 +783,9 @@ code {
   margin-bottom: 25px;
 }
 
-.notfound a {
-  padding: 10px 30px;
+.notfound a,
+.buttonContainer button {
+  padding: 0.4rem 1.2rem;
   display: inline-block;
   color: $off-black;
   font-weight: 400;
@@ -771,7 +797,8 @@ code {
   transition: 0.2s all;
 }
 
-.notfound a:hover {
+.notfound a:hover,
+.buttonContainer button:hover {
   background-color: $primary;
   -webkit-box-shadow: 0px 0px 0px 0px $off-black, 0px 0px 0px 2px $primary;
   box-shadow: 0px 0px 0px 0px $off-black, 0px 0px 0px 2px $primary;

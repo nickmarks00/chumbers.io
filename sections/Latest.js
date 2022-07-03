@@ -5,7 +5,6 @@ import moment from "moment";
 import { BsFillCalendarFill, BsClock } from "react-icons/bs";
 
 import { getReadingTime } from "../services/getReadingTime";
-import Tag from "../components/Tag";
 
 const Latest = ({ latest }) => {
   return (

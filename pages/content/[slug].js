@@ -18,9 +18,7 @@ import { getPostPaths, getSinglePost } from "../../services/getPosts";
 import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
 import { getReadingTime } from "../../services/getReadingTime";
-import { getRelatedPosts } from "../../services/getTypePosts";
 
-import Tag from "../../components/Tag";
 import TableOfContents from "../../components/TableOfContents";
 import Loader from "../../components/Loader";
 import { mdxSerializer } from "../../services/mdxSerializer";
@@ -196,7 +194,7 @@ export async function getStaticProps({ params }) {
 
   const headings = getHeadings(post.content.html);
 
-  const mdx = await mdxSerializer(post.content.markdown);
+  const mdx = await mdxSerializer(post.markdownField);
 
   return {
     props: {

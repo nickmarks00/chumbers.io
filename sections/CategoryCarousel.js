@@ -44,7 +44,7 @@ export const CategoryCarousel = ({ categories }) => {
                 objectFit="cover"
                 className="h-full object-cover absolute  z-50"
               />
-              <div className="absolute inset-y-1/2 -translate-x-1/2 ml-11">
+              <div className="absolute inset-y-1/2 -translate-x-1/2 ml-16">
                 <h2
                   className="font-display text-white text-2xl font-bold lowercase my-auto underline--magical-def"
                   style={{

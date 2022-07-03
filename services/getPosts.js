@@ -36,6 +36,7 @@ export const getSinglePost = async (slug) => {
             markdown
             html
           }
+          markdownField
           heroImage {
             alternate
             url

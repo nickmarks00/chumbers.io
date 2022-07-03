@@ -73,17 +73,19 @@ const NewsletterForm = ({ status, message, onValidated }) => {
       <p className="text-gray-200">
         Get the latest posts, articles and series sent directly to your inbox
       </p>
-      <InputField
-        type="email"
-        label="Sign me up!"
-        placeholder="E-mail"
-        btnLabel="send"
-        isEmail={true}
-        id="footerNotify"
-        onChange={(event) => handleChange(event)}
-        onKeyUp={(event) => handleInputKeyEvent(event)}
-        onSubmit={handleFormSubmit}
-      />
+      <div className="mt-2 w-3/4">
+        <InputField
+          type="email"
+          label="Sign me up!"
+          placeholder="E-mail"
+          btnLabel="subscribe"
+          isEmail={true}
+          id="footerNotify"
+          onChange={(event) => handleChange(event)}
+          onKeyUp={(event) => handleInputKeyEvent(event)}
+          onSubmit={handleFormSubmit}
+        />
+      </div>
       <div className="min-h-42px">
         {"sending" === status ? <Loader className="mt-12" /> : null}
         {"error" === status || error ? (
