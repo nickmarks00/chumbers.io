@@ -83,6 +83,7 @@ const Footer = ({ categories }) => {
             href="https://www.youtube.com/c/Chumbers"
             className="icon"
             target="_blank"
+            rel="noreferrer"
           >
             <FiYoutube />
           </a>
@@ -90,6 +91,7 @@ const Footer = ({ categories }) => {
             href="https://linkedin.com/in/nickmarks00"
             className="icon"
             target="_blank"
+            rel="noreferrer"
           >
             <FiLinkedin />
           </a>
@@ -97,6 +99,7 @@ const Footer = ({ categories }) => {
             href="https://github.com/nickmarks00"
             className="icon"
             target="_blank"
+            rel="noreferrer"
           >
             <FiGithub />
           </a>
@@ -104,6 +107,7 @@ const Footer = ({ categories }) => {
             href="mailto:nickmarks00@gmail.com"
             className="icon"
             target="_blank"
+            rel="noreferrer"
           >
             <MdOutlineEmail />
           </a>

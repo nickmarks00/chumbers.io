@@ -121,6 +121,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
                       style={{ minWidth: "6rem" }}
                       href="https://redis.com/redis-enterprise-cloud/overview/"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <div className="w-full h-full relative">
                         <Image
