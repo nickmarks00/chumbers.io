@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
+import toast from "react-hot-toast";
 import styled from "styled-components";
 import { HiOutlineClipboardCopy } from "react-icons/hi";
 
@@ -31,13 +32,21 @@ const Codeblock = ({ children }) => {
   const {
     props: { children: source, className: languageClass },
   } = children;
-  // const language = languageClass.replace(/language-/, "");
+
+  let language;
+
+  try {
+    language = languageClass.replace(/language-/, "");
+  } catch (e) {
+    language = "none";
+  }
 
   const [clip, setClip] = useState(false);
   const handleClipboard = () => {
     copy(source);
     setClip(true);
     setTimeout(() => setClip(false), 400);
+    toast.success("👏 Copied code to your clipboard");
   };
 
   const copy = async (code) => {
@@ -49,7 +58,7 @@ const Codeblock = ({ children }) => {
       {...defaultProps}
       theme={theme}
       code={source}
-      language="javascript"
+      language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div className="relative">

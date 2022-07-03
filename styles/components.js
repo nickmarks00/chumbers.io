@@ -122,11 +122,21 @@ const components = {
       />
     );
   },
-  p: ({ children, props }) => (
-    <p className="post-paragraph font-display mt-4 mb-4 font-md" {...props}>
-      {children}
-    </p>
-  ),
+  p: ({ children, props }) => {
+    if (
+      typeof children == "object" &&
+      children?.props &&
+      "src" in children.props
+    ) {
+      return <div>{children}</div>;
+    }
+
+    return (
+      <p className="post-paragraph font-display mt-4 mb-4 font-md" {...props}>
+        {children}
+      </p>
+    );
+  },
   code: ({ props }) => {
     return (
       <code
@@ -140,31 +150,33 @@ const components = {
       </code>
     );
   },
-  a: ({ children, openInNewTab, href, rel, ...rest }) => {
-    if (href.match(/^https?:\/\/|^\/\//i)) {
+  a: ({ children, href, ...rest }) => {
+    // Internal links
+    if (href.match(/(https?:\/\/chumbers.io)|(http:\/\/localhost:3000)/gi)) {
       return (
-        <a
-          href={href}
-          target={openInNewTab ? "_blank" : "_self"}
-          rel={rel || "noopener noreferrer"}
-          className="underline--magical"
-          {...rest}
-        >
-          {children}
-        </a>
+        <Link href={href}>
+          <a className="underline--magical" {...rest}>
+            {children}
+          </a>
+        </Link>
       );
     }
 
+    // External links
     return (
-      <Link href={href}>
-        <a className="underline--magical" {...rest}>
-          {children}
-        </a>
-      </Link>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline--magical"
+        {...rest}
+      >
+        {children}
+      </a>
     );
   },
   blockquote: ({ children }) => (
-    <blockquote className="ml-2 my-4 py-2 font-display text-2xl pl-4 border-l-4 border-off-black italic transition duration-500 ease-out hover:border-teal bg-tertiary rounded-sm">
+    <blockquote className="ml-2 my-4 py-2 font-display text-xl pl-4 border-l-4 border-off-black italic transition duration-500 ease-out hover:border-teal bg-red rounded-sm">
       {children}
     </blockquote>
   ),
@@ -172,15 +184,19 @@ const components = {
     return <PostImage src={src} altText={alt} />;
   },
   li: ({ children }) => {
-    return <li className="leading-7 not-pg">{children}</li>;
+    return <li className="leading-7 not-pg my-1">{children}</li>;
   },
-  ul: ({ children }) => <ul className="ml-6 list-disc not-pg">{children}</ul>,
+  ul: ({ children }) => (
+    <ul className="ml-6 list-disc not-pg font-display">{children}</ul>
+  ),
   ol: ({ children }) => (
-    <ol className="ml-6 list-decimal not-pg">{children}</ol>
+    <ol className="ml-6 list-decimal not-pg font-display">{children}</ol>
   ),
   table: ({ children }) => (
     <section className="grid place-items-center my-6">
-      <table className="border border-off-black w-5/6">{children}</table>
+      <table className="border border-off-black w-5/6 font-display">
+        {children}
+      </table>
     </section>
   ),
   thead: ({ children, ...props }) => {
@@ -195,7 +211,7 @@ const components = {
     <tr className="h-12 border-b border-off-black">{children}</tr>
   ),
   td: ({ children }) => (
-    <td className="border-r border-off-black text-center min-w-max px-2">
+    <td className="border border-off-black text-center min-w-max px-2">
       {children}
     </td>
   ),
@@ -204,13 +220,20 @@ const components = {
       {children}
     </th>
   ),
-  pre: (props) => <Codeblock {...props} />,
+  pre: (props) => {
+    return <Codeblock {...props} />;
+  },
   iframe: (props) => {
     return (
-      <div className="relative overflow-hidden w-full h-80 lg:96 my-6">
-        <iframe className="w-full h-full" {...props} title={props.title} />
-      </div>
+      <iframe
+        className="h-full w-full my-6 block"
+        {...props}
+        title={props.title}
+      />
     );
+  },
+  hl: ({ children }) => {
+    return <span className="bg-teal">{children}</span>;
   },
 };
 

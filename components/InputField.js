@@ -1,62 +1,40 @@
 import React from "react";
 
+import Button from "./Button";
+
 const InputField = ({
   type,
   label,
   placeholder,
   btnLabel,
-  isEmail,
   id,
   className,
-  action,
   onChange,
   onKeyUp,
   onSubmit,
   disabled = false,
 }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(e);
+  };
   return (
-    <div
-      className={`input-container grid justify-items-center mt-6 container rounded-md ${
-        className ? className : ""
-      }`}
-    >
-      <input className="c-checkbox rounded-md" type="checkbox" id={id} />
-      <div className="c-formContainer">
-        <form className="c-form rounded-md" action={action}>
-          <input
-            className="c-form__input"
-            placeholder={placeholder}
-            type={type}
-            pattern={
-              isEmail
-                ? "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$"
-                : undefined
-            }
-            required
-            disabled={disabled}
-            onChange={onChange}
-            onKeyUp={onKeyUp}
-          />
-          <label className="c-form__buttonLabel" htmlFor={id}>
-            <button
-              className="c-form__button btn-black mr-1 mb-2"
-              type="button"
-              name={id}
-              onSubmit={onSubmit}
-            >
-              {btnLabel}
-            </button>
-          </label>
-          <label
-            className="c-form__toggle rounded-md transition duration-100 ease-in hover:bg-teal hover:opacity-50"
-            htmlFor={id}
-            data-title={label}
-          >
-            <input type="text" className="hidden" />
-          </label>
-        </form>
-      </div>
-    </div>
+    <form onSubmit={handleSubmit} className="flex items-center">
+      <input
+        type={type}
+        placeholder={placeholder}
+        className={`w-full mb-1 px-3 py-4 w-full font-bold text-sm focus:outline-none focus:ring focus:ring-primary rounded-md ${className}`}
+        onChange={onChange}
+        onKeyUp={onKeyUp}
+        disabled={disabled}
+        id={id}
+      />
+      <Button
+        buttonText={btnLabel}
+        className="absolute "
+        style={{ right: "7rem" }}
+      />
+    </form>
   );
 };
 

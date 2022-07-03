@@ -36,7 +36,7 @@ const Featured = ({ featured }) => {
                 <div className="h-3/5">
                   <span className="overlay-block bg-teal opacity-60 hidden h-3/5 w-full absolute z-10 text-left  overflow-hidden"></span>
                   <span
-                    className="rounded-md absolute mt-2 ml-2 px-2 py-1 top-0 left-0 z-10 text-sm"
+                    className="rounded-md font-bold absolute mt-2 ml-2 px-2 py-1 top-0 left-0 z-10 text-sm"
                     style={{
                       backgroundColor: `${post.category.categoryTheme.hex}`,
                     }}

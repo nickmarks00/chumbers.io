@@ -38,7 +38,7 @@ const Navbar = ({ categories }) => {
           key="more"
           list={lowerNavigation[2][1]}
         />
-        <Search className="md:hidden w-screen mx-auto" />
+        <Search className="ml-2 flex md:hidden" />
       </div>
     </nav>
   );
@@ -52,7 +52,10 @@ const UpperNav = ({ setToggle, isToggled }) => {
           <a>chumbers</a>
         </Link>
       </h1>
-      <Search />
+      <Search
+        className="flex-grow hidden md:flex relative"
+        inputClasses="mt-8"
+      />
       <div className="flex-shrink-0 text-gray-500 hidden md:flex items-center w-auto px-2 pt-6 pb-2">
         <a href="https://www.youtube.com/c/Chumbers" className="icon">
           <FiYoutube />
@@ -77,6 +80,8 @@ const UpperNav = ({ setToggle, isToggled }) => {
 };
 
 const LowerNavDropdown = ({ list, name }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className="dropdown w-full md:relative">
       <span>
@@ -85,6 +90,7 @@ const LowerNavDropdown = ({ list, name }) => {
           type="button"
         >
           <span className="capitalize">{name}</span>
+
           <svg
             className="w-5 h-5 ml-2 -mr-1"
             viewBox="0 0 20 20"

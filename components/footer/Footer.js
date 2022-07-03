@@ -79,16 +79,32 @@ const Footer = ({ categories }) => {
           </div>
         </article>
         <div className="text-gray-500 flex mt-9 sm:mt-1 justify-center">
-          <a href="https://www.youtube.com/c/Chumbers" className="icon">
+          <a
+            href="https://www.youtube.com/c/Chumbers"
+            className="icon"
+            target="_blank"
+          >
             <FiYoutube />
           </a>
-          <a href="https://linkedin.com/in/nickmarks00" className="icon">
+          <a
+            href="https://linkedin.com/in/nickmarks00"
+            className="icon"
+            target="_blank"
+          >
             <FiLinkedin />
           </a>
-          <a href="https://github.com/nickmarks00" className="icon">
+          <a
+            href="https://github.com/nickmarks00"
+            className="icon"
+            target="_blank"
+          >
             <FiGithub />
           </a>
-          <a href="mailto:nickmarks00@gmail.com" className="icon">
+          <a
+            href="mailto:nickmarks00@gmail.com"
+            className="icon"
+            target="_blank"
+          >
             <MdOutlineEmail />
           </a>
         </div>
