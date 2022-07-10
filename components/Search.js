@@ -73,7 +73,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
             <div className="flex items-center">
               <input
                 type="text"
-                className="w-full mb-1 px-3 py-4 w-full font-bold text-sm focus:outline-none focus:ring focus:ring-primary rounded-md"
+                className="w-full mb-1 px-3 py-4 w-full font-bold text-sm focus:outline-none focus:ring focus:ring-teal rounded-md"
                 placeholder="Search"
                 autoFocus={showModal}
                 onChange={search}
@@ -140,7 +140,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
       )}
       <input
         type="text"
-        className={`rounded-md justify-items-center px-3 py-2 ${inputClasses} w-full font-bold text-sm`}
+        className={`rounded-md justify-items-center px-3 py-2 ${inputClasses} w-full font-bold text-sm transform transition duration-200 hover:ring-2 hover:ring-teal`}
         placeholder="Search"
         onFocus={handleBlur}
       />

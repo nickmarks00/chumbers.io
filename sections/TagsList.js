@@ -5,6 +5,10 @@ import Tag from "../components/Tag";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
+const NUM_TAGS_SM = 10;
+const NUM_TAGS_MD = 13;
+const NUM_TAGS_LG = 24;
+
 const TagsList = ({ tags }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -24,7 +28,11 @@ const TagsList = ({ tags }) => {
   const updateTags = () => {
     window.addEventListener("resize", function () {
       setTagsPerPage(
-        window.innerWidth < 768 ? (window.innerWidth < 410 ? 10 : 13) : 21
+        window.innerWidth < 900
+          ? window.innerWidth < 450
+            ? NUM_TAGS_SM
+            : NUM_TAGS_MD
+          : NUM_TAGS_LG
       );
     });
   };
@@ -32,7 +40,11 @@ const TagsList = ({ tags }) => {
   useEffect(() => {
     if (tagsPerPage === 0) {
       setTagsPerPage(
-        window.innerWidth < 768 ? (window.innerWidth < 410 ? 10 : 13) : 21
+        window.innerWidth < 768
+          ? window.innerWidth < 410
+            ? NUM_TAGS_SM
+            : NUM_TAGS_MD
+          : NUM_TAGS_LG
       );
     } else {
       updateTags();

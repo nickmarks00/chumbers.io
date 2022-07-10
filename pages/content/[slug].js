@@ -18,11 +18,13 @@ import { getPostPaths, getSinglePost } from "../../services/getPosts";
 import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
 import { getReadingTime } from "../../services/getReadingTime";
-
-import TableOfContents from "../../components/TableOfContents";
-import Loader from "../../components/Loader";
 import { mdxSerializer } from "../../services/mdxSerializer";
+
+import BackToTop from "../../components/BackToTop";
+import Loader from "../../components/Loader";
 import Related from "../../sections/Related";
+import ScrollProgressBar from "../../components/ScrollProgressBar";
+import TableOfContents from "../../components/TableOfContents";
 
 const Content = ({ post }) => {
   const router = useRouter();
@@ -42,6 +44,9 @@ const Content = ({ post }) => {
           crossOrigin="anonymous"
         />
       </Head>
+
+      <ScrollProgressBar />
+      <BackToTop />
 
       <div className="h-96">
         <div className="w-full h-full relative">

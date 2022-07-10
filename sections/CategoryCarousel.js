@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
 export const CategoryCarousel = ({ categories }) => {
+  let categoryCarouselWindow;
+
+  const forceScroll = () => {
+    categoryCarouselWindow = document.getElementById("categoryCarousel");
+    categoryCarouselWindow.scrollTo({
+      left: -10000,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    forceScroll();
+    window.addEventListener("resize", function () {
+      forceScroll();
+    });
+
+    return () => {
+      window.removeEventListener("resize", forceScroll);
+    };
+  }, []);
+
   return (
     <section className="text-center mt-6">
       <div className="flex text-center">
@@ -14,7 +35,10 @@ export const CategoryCarousel = ({ categories }) => {
           </Link>
         </h2>
       </div>
-      <section className="flex flex-row-reverse p-12 overflow-x-auto card-list justify-items-center">
+      <section
+        className="flex flex-row-reverse p-12 overflow-x-auto card-list justify-items-center"
+        id="categoryCarousel"
+      >
         <Link key="all" href={`/categories`}>
           <a className="flex flex-col justify-items-center rounded-2xl card overflow-hidden cursor-pointer shadow-xl bg-teal container relative opacity-90">
             <div className="absolute ml-24 inset-y-1/2 -translate-x-1/2 flex">

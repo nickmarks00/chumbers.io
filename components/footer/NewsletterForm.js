@@ -73,7 +73,7 @@ const NewsletterForm = ({ status, message, onValidated }) => {
       <p className="text-gray-200">
         Get the latest posts, articles and series sent directly to your inbox
       </p>
-      <div className="mt-2 w-3/4">
+      <div className="mt-2 w-full">
         <InputField
           type="email"
           label="Sign me up!"

@@ -127,7 +127,7 @@ const FooterColumn = ({ heading, list }) => {
         {heading}
       </h4>
       {list.map((row, index) => (
-        <>
+        <div key={index}>
           {row.name !== "resume" ? (
             <Link
               key={`link-${index}`}
@@ -160,7 +160,7 @@ const FooterColumn = ({ heading, list }) => {
               </span>
             </a>
           )}
-        </>
+        </div>
       ))}
       {heading === "categories" && (
         <Link key="all" href="/categories">

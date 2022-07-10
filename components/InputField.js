@@ -19,21 +19,20 @@ const InputField = ({
     onSubmit(e);
   };
   return (
-    <form onSubmit={handleSubmit} className="flex items-center">
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center w-full mb-1 h-12 font-bold text-sm md:text-md  focus:ring-2 focus:ring-teal rounded-md transform transition duration-200 hover:ring-2 hover:ring-teal overflow-hidden bg-white"
+    >
       <input
         type={type}
         placeholder={placeholder}
-        className={`w-full mb-1 px-3 py-4 w-full font-bold text-sm focus:outline-none focus:ring focus:ring-primary rounded-md ${className}`}
+        className={`border-0 grow h-full px-2 focus:outline-none inputForm font-bold  ${className}`}
         onChange={onChange}
         onKeyUp={onKeyUp}
         disabled={disabled}
         id={id}
       />
-      <Button
-        buttonText={btnLabel}
-        className="absolute "
-        style={{ right: "7rem" }}
-      />
+      <Button buttonText={btnLabel} className="mr-3 ml-4" />
     </form>
   );
 };

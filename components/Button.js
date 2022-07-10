@@ -1,7 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
-const Button = ({ buttonText, href = null, className, style }) => {
+const Button = ({
+  buttonText,
+  href = null,
+  className,
+  style,
+  type = "submit",
+}) => {
   if (href) {
     return (
       <div className="notfound">
@@ -14,7 +20,7 @@ const Button = ({ buttonText, href = null, className, style }) => {
 
   return (
     <div className={`buttonContainer ${className}`} style={style}>
-      <button type="submit" className="uppercase">
+      <button type={type} className="uppercase p-2">
         {buttonText}
       </button>
     </div>

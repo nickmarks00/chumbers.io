@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { FiYoutube, FiLinkedin, FiGithub } from "react-icons/fi";
+import toast from "react-hot-toast";
+
+import {
+  FiYoutube,
+  FiLinkedin,
+  FiGithub,
+  FiMoreHorizontal,
+} from "react-icons/fi";
+import { AiOutlineMedium, AiOutlineClose } from "react-icons/ai";
+import { SiSubstack } from "react-icons/si";
+import { FaDev } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
@@ -16,7 +26,7 @@ const Navbar = ({ categories }) => {
     <nav className="bg-off-black flex flex-col justify-items-center items-center sticky top-0 z-50 w-full py-4">
       <UpperNav setToggle={setShow} isToggled={show} />
       <div
-        className={`flex-col md:flex md:flex-row md:justify-items-center justify-between md:w-2/3 md:mx-auto border-t border-gray-100 w-full ${
+        className={`flex-col md:flex md:flex-row md:justify-items-center justify-between text-center md:w-2/3 md:mx-auto border-t border-gray-100 w-full ${
           show ? "flex" : "hidden"
         } transition duration-300 ease-in`}
       >
@@ -39,8 +49,111 @@ const Navbar = ({ categories }) => {
           list={lowerNavigation[2][1]}
         />
         <Search className="ml-2 flex md:hidden" />
+        <div className="text-gray-500 flex mx-auto md:hidden justify-center w-full p-2">
+          <IconSet />
+        </div>
       </div>
     </nav>
+  );
+};
+
+const MoreMenu = () => {
+  return (
+    <div className="flex-col bg-gray-200 rounded-md bottom-4 right-4 p-4 ul-none font-display font-bold px-3">
+      <AiOutlineClose
+        className="icon absolute right-3 top-3 cursor-pointer"
+        onClick={() => toast.dismiss()}
+      />
+      <h2 className="font-display text-large underline--magical my-2 inline-block">
+        My socials
+      </h2>
+      <ul className="ul-none mr-5" style={{ listStyleType: "none" }}>
+        <li className="mb-2 mx-3">
+          <a
+            className="transition duration-200 hover:text-teal flex items-center"
+            href="mailto:nickmarks0000@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MdOutlineEmail className="ml-1 mr-3" />
+            <p>Email</p>
+          </a>
+        </li>
+        <li className="mb-2 mx-3">
+          <a
+            className="transition duration-200 hover:text-teal flex items-center"
+            href="https://medium.com/@nickmarks00"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <AiOutlineMedium className="ml-1 mr-3" />
+            <p>Medium</p>
+          </a>
+        </li>
+        <li className="mb-2 mx-3">
+          <a
+            className="transition duration-200 hover:text-teal flex items-center"
+            href="https://nickmarks.substack.com/publish"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <SiSubstack className="ml-1 mr-3" />
+            <p>Substack</p>
+          </a>
+        </li>
+
+        <li className="mb-2 mx-3">
+          <a
+            className="transition duration-200 hover:text-teal flex items-center"
+            href="https://dev.to/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaDev className="ml-1 mr-3" />
+            <p>Dev.to</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+const IconSet = () => {
+  const toastMoreMenu = () => {
+    toast.custom(<MoreMenu />, {
+      duration: 7000,
+      id: "socialToast", // limits to one concurrent toast at a time
+    });
+  };
+  return (
+    <>
+      <a
+        href="https://www.youtube.com/c/Chumbers"
+        className="icon"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FiYoutube />
+      </a>
+      <a
+        href="https://linkedin.com/in/nickmarks00"
+        className="icon"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FiLinkedin />
+      </a>
+      <a
+        href="https://github.com/nickmarks00"
+        className="icon"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FiGithub />
+      </a>
+
+      <FiMoreHorizontal className="icon" onClick={toastMoreMenu} />
+    </>
   );
 };
 
@@ -57,18 +170,7 @@ const UpperNav = ({ setToggle, isToggled }) => {
         inputClasses="mt-8"
       />
       <div className="flex-shrink-0 text-gray-500 hidden md:flex items-center w-auto px-2 pt-6 pb-2">
-        <a href="https://www.youtube.com/c/Chumbers" className="icon">
-          <FiYoutube />
-        </a>
-        <a href="https://linkedin.com/in/nickmarks00" className="icon">
-          <FiLinkedin />
-        </a>
-        <a href="https://github.com/nickmarks00" className="icon">
-          <FiGithub />
-        </a>
-        <a href="mailto:nickmarks0000@gmail.com" className="icon">
-          <MdOutlineEmail />
-        </a>
+        <IconSet />
       </div>
       <HiOutlineMenuAlt3
         className="text-white cursor-pointer transition duration-500 hover:text-teal md:hidden mx-4 my-auto"
@@ -80,8 +182,6 @@ const UpperNav = ({ setToggle, isToggled }) => {
 };
 
 const LowerNavDropdown = ({ list, name }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <div className="dropdown w-full md:relative">
       <span>

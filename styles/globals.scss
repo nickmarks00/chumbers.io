@@ -21,6 +21,7 @@ html {
 body {
   height: 100%;
   background-color: $off-black;
+  overflow-x: hidden;
 }
 
 html {
@@ -56,6 +57,10 @@ ul {
 
 ol {
   list-style-type: decimal !important;
+}
+
+.ul-none {
+  list-style-type: none !important;
 }
 
 hr {
@@ -785,8 +790,6 @@ code {
 
 .notfound a,
 .buttonContainer button {
-  padding: 0.4rem 1.2rem;
-  display: inline-block;
   color: $off-black;
   font-weight: 400;
   text-transform: uppercase;
@@ -970,4 +973,16 @@ code {
   font-size: 60%;
   transition: all 0.2s ease;
   font-weight: bold;
+}
+
+@media (max-width: 375px) {
+  .inputForm {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 870px) {
+  .inputForm {
+    max-width: 60%;
+  }
 }
