@@ -1,19 +1,20 @@
 import aws from "aws-sdk";
 
-const ses = new aws.SES({ region: "ap-southeast-2" });
+const ses = new aws.SES({
+  region: "ap-southeast-2",
+  accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+});
 
 export default async function handler(req, res) {
   const { name, email, subject, message } = req.body;
 
-  console.log(req.body);
-
   sesSend("nd.marks00@gmail.com", email, message, name, subject)
     .then((val) => {
-      console.log(`SES Returned ${val}`);
-      res.send("Success");
+      res.status(200).send("Success");
     })
     .catch((err) => {
-      res.send("/error" + err);
+      res.status(400).send("/error" + err);
     });
 }
 
@@ -25,7 +26,7 @@ function sesSend(emailTo, emailFrom, message, name, subject) {
     Message: {
       Body: {
         Text: {
-          Data: `Name: ${name}\n Contact: ${emailFrom}\n\n Message: ${message}`,
+          Data: `Name: ${name}\nContact: ${emailFrom}\n\nMessage: ${message}`,
         },
       },
       Subject: {
