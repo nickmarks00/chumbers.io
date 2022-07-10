@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import Loader from "../components/Loader";
 import Seo from "../components/SEO";
 
-const contact = () => {
+const Contact = () => {
   const [loading, setLoading] = useState(false);
 
   const handleFocus = (e) => {
@@ -124,4 +124,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
