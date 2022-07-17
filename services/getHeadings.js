@@ -1,27 +1,11 @@
-export const getHeadings = (html) => {
-  const re = /<h1>(.*?)<\/h1>/g;
+import toc from "markdown-toc";
+import { remark } from "remark";
+import html from "remark-html";
 
-  if (html.match(re)) {
-    return html.match(re).map((heading) => {
-      const headingText = heading
-        .replace("<h1>", "")
-        .replace("</h1>", "")
-        .replace(/\&#39;/g, "'")
-        .replace(/\&quot;/g, `\"`);
+export const getHeadings = async (md) => {
+  const processedContent = await remark().use(html).process(toc(md).content);
 
-      const link =
-        "#" +
-        headingText
-          .replace(/ /g, "-")
-          .replace(/[^a-zA-Z0-9\-]/g, "")
-          .toLowerCase();
+  const contentHtml = processedContent.toString();
 
-      return {
-        text: headingText,
-        link,
-      };
-    });
-  }
-
-  return [];
+  return contentHtml;
 };

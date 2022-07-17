@@ -69,9 +69,7 @@ export const getSingleTag = async (slug) => {
             title
             publishedAt
             updatedAt
-            content {
-              markdown
-            }
+            content
             excerpt
           }
         }

@@ -23,6 +23,7 @@ export const getFeatured = async () => {
             url
             alternate
           }
+          content
           slug
           title
           tags {
@@ -33,9 +34,6 @@ export const getFeatured = async () => {
             }
           }
           excerpt
-          content {
-            markdown
-          }
         }
       }
     `,
@@ -62,6 +60,7 @@ export const getLatest = async () => {
             url
             alternate
           }
+          content
           slug
           title
           tags {
@@ -69,9 +68,6 @@ export const getLatest = async () => {
             slug
           }
           excerpt
-          content {
-            markdown
-          }
         }
       }
     `,
@@ -92,11 +88,9 @@ export const getRelatedPosts = async (slug, tags) => {
           heroImage {
             url
           }
+          content
           featuredPost
           excerpt
-          content {
-            markdown
-          }
           createdAt
           slug
         }

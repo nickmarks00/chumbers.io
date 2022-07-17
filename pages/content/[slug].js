@@ -45,8 +45,8 @@ const Content = ({ post }) => {
         />
       </Head>
 
-      <ScrollProgressBar />
-      <BackToTop />
+      {/* <ScrollProgressBar /> */}
+      {/* <BackToTop /> */}
 
       <div className="h-96">
         <div className="w-full h-full relative">
@@ -85,7 +85,7 @@ const Content = ({ post }) => {
               </article>
               <article className="flex items-center py-1 mt-1">
                 <BsClock className="mr-1" />
-                <p>{getReadingTime(post.content.markdown)} min. read</p>
+                <p>{getReadingTime(post.content)} min. read</p>
               </article>
             </div>
             {post.series && (
@@ -168,21 +168,21 @@ const Content = ({ post }) => {
               rel="noreferrer"
               href={`https://twitter.com/intent/tweet?url=${url}&text=${post.title}&via=nickmarks00`}
             >
-              <FiTwitter className="h-10 w-10 text-gray-400" />
+              <FiTwitter className="h-10 w-10 text-gray-400 hover:text-teal transition duration-300" />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href={`https://facebook.com/sharer.php?u=${url}`}
             >
-              <FiFacebook className="h-10 w-10 text-gray-400 mx-9" />
+              <FiFacebook className="h-10 w-10 text-gray-400 mx-9 hover:text-teal transition duration-300" />
             </a>
             <a
               href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}`}
               target="_blank"
               rel="noreferrer"
             >
-              <FiLinkedin className="h-10 w-10 text-gray-400" />
+              <FiLinkedin className="h-10 w-10 text-gray-400 hover:text-teal transition duration-300" />
             </a>
           </div>
           <hr className="w-full" />
@@ -197,9 +197,9 @@ export default Content;
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);
 
-  const headings = getHeadings(post.content.html);
+  const headings = await getHeadings(post.content);
 
-  const mdx = await mdxSerializer(post.markdownField);
+  const mdx = await mdxSerializer(post.content);
 
   return {
     props: {

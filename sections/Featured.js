@@ -68,7 +68,7 @@ const Featured = ({ featured }) => {
                       <div className="flex flex-row">
                         <BsClock className="md:mx-2 mr-2" />
                         <p className="text-xs">
-                          {getReadingTime(post.content.markdown)} min. read
+                          {getReadingTime(post.content)} min. read
                         </p>
                       </div>
                     </div>

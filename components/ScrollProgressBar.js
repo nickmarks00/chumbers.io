@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ScrollProgressBar = () => {
   let scrollProgress;
+  let scrollTop;
   let height;
-  if (typeof window !== "undefined") {
-    scrollProgress = document.getElementById("scroll-progress");
-    height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
 
+  const updateScroll = () => {
     window.addEventListener("scroll", () => {
-      const scrollTop =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
+      height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      if (scrollProgress) {
+        scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
+      }
     });
-  }
+  };
+
+  useEffect(() => {
+    scrollProgress = document.getElementById("scroll-progress");
+    updateScroll();
+
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+    };
+  });
 
   return (
     <div

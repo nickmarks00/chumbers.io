@@ -9,15 +9,16 @@ import { getCategoriesLink } from "../services/getCategories";
 
 const Layout = ({ children }) => {
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     getCategoriesLink().then((res) => setCategories(res));
   }, []);
   return (
-    <>
+    <div id="site-wrapper">
       <Navbar categories={categories} />
       {children}
       <Footer categories={categories} />
-    </>
+    </div>
   );
 };
 

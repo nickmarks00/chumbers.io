@@ -76,9 +76,7 @@ export const getSingleCategory = async (slug) => {
             title
             publishedAt
             updatedAt
-            content {
-              markdown
-            }
+            content
             excerpt
           }
           categoryPicture {

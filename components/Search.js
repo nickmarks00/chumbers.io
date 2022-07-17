@@ -1,17 +1,19 @@
-import React, { useState, useCallback } from "react";
-
+import React, { useState, useCallback, useContext } from "react";
 import Image from "next/image";
 
 import debounce from "lodash.debounce";
 import { IoMdClose } from "react-icons/io";
 
+import { SearchContext } from "../context/SearchContext";
+
 import Button from "./Button";
 import Loader from "./Loader";
 import PostCard from "./PostCard";
 
-const Search = ({ className = "", inputClasses = "" }) => {
+const Search = ({ className = "" }) => {
+  const { isSearching, setIsSearching } = useContext(SearchContext);
+
   const [hits, setHits] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -36,7 +38,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
   );
 
   const handleBlur = () => {
-    setShowModal(!showModal);
+    setIsSearching(!isSearching);
     setHits([]);
     setQuery("");
   };
@@ -45,7 +47,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
     // Number 27 is the "Esc" key on the keyboard
     if (event.keyCode === 27) {
       setHits([]);
-      setShowModal(false);
+      setIsSearching(false);
       setQuery("");
     }
   };
@@ -54,7 +56,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
 
   return (
     <div className={`px-2 pb-5 ${className}`} style={{ zIndex: 100 }}>
-      {showModal && (
+      {isSearching && (
         <section
           style={{ zIndex: 1000 }}
           className=" w-screen h-screen fixed inset-0 bg-black/10 backdrop-blur-sm dark:bg-slate-600/80 overflow-clip"
@@ -75,7 +77,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
                 type="text"
                 className="w-full mb-1 px-3 py-4 w-full font-bold text-sm focus:outline-none focus:ring focus:ring-teal rounded-md"
                 placeholder="Search"
-                autoFocus={showModal}
+                autoFocus={isSearching}
                 onChange={search}
                 onKeyUp={handleInputKeyEvent}
               />
@@ -90,7 +92,7 @@ const Search = ({ className = "", inputClasses = "" }) => {
             <div>
               <ul className={`w-full ${hits.length == 0 && "hidden"}`}>
                 {hits.slice(0, NUM_RESULTS).map((hit) => (
-                  <PostCard post={hit} key={hit.entityId} isRelated={true} />
+                  <PostCard post={hit} key={hit.entityId} isRelated={false} />
                 ))}
               </ul>
               <section className="w-full font-bold bg-white text-md p-4 rounded-md flex-col">
@@ -138,12 +140,15 @@ const Search = ({ className = "", inputClasses = "" }) => {
           </div>
         </section>
       )}
-      <input
-        type="text"
-        className={`rounded-md justify-items-center px-3 py-2 ${inputClasses} w-full font-bold text-sm transform transition duration-200 hover:ring-2 hover:ring-teal`}
-        placeholder="Search"
-        onFocus={handleBlur}
-      />
+      <div className="flex w-full px-3 py-2 font-bold text-sm md:text-md  focus:ring-2 focus:ring-teal rounded-md transform transition duration-200 hover:ring-2 hover:ring-teal overflow-hidden bg-white mt-7">
+        <input
+          type="text"
+          placeholder="Search"
+          onFocus={handleBlur}
+          className="border-0 grow px-2 focus:outline-none inputForm font-bold"
+        />
+        <span className="mr-3 ml-4 text-gray-400">(ctrl+y)</span>
+      </div>
     </div>
   );
 };

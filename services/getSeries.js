@@ -33,9 +33,7 @@ export const getSingleSeries = async (slug) => {
             slug
             title
             publishedAt
-            content {
-              markdown
-            }
+            content
             excerpt
           }
           seriesImage {

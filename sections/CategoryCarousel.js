@@ -5,26 +5,26 @@ import Image from "next/image";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
 export const CategoryCarousel = ({ categories }) => {
-  let categoryCarouselWindow;
+  // let categoryCarouselWindow;
 
-  const forceScroll = () => {
-    categoryCarouselWindow = document.getElementById("categoryCarousel");
-    categoryCarouselWindow.scrollTo({
-      left: -10000,
-      behavior: "smooth",
-    });
-  };
+  // const forceScroll = () => {
+  //   categoryCarouselWindow = document.getElementById("categoryCarousel");
+  //   categoryCarouselWindow.scrollTo({
+  //     left: -10000,
+  //     behavior: "smooth",
+  //   });
+  // };
 
-  useEffect(() => {
-    forceScroll();
-    window.addEventListener("resize", function () {
-      forceScroll();
-    });
+  // useEffect(() => {
+  //   forceScroll();
+  //   window.addEventListener("resize", function () {
+  //     forceScroll();
+  //   });
 
-    return () => {
-      window.removeEventListener("resize", forceScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", forceScroll);
+  //   };
+  // }, []);
 
   return (
     <section className="text-center mt-6">

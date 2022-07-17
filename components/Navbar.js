@@ -165,10 +165,7 @@ const UpperNav = ({ setToggle, isToggled }) => {
           <a>chumbers</a>
         </Link>
       </h1>
-      <Search
-        className="flex-grow hidden md:flex relative"
-        inputClasses="mt-8"
-      />
+      <Search className="flex-grow hidden md:flex items-center my-auto" />
       <div className="flex-shrink-0 text-gray-500 hidden md:flex items-center w-auto px-2 pt-6 pb-2">
         <IconSet />
       </div>

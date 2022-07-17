@@ -110,7 +110,7 @@ const LinkedContent = ({
                             </p>
                             <p className="flex mx-2 items-center">
                               <BsClock className="mr-2" />
-                              {`${getReadingTime(content.markdown)} min. read`}
+                              {`${getReadingTime(content)} min. read`}
                             </p>
                             {featuredPost && (
                               <p className="flex mx-2 items-center">

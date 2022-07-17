@@ -32,11 +32,7 @@ export const getSinglePost = async (slug) => {
             name
             slug
           }
-          content {
-            markdown
-            html
-          }
-          markdownField
+          content
           heroImage {
             alternate
             url
@@ -79,9 +75,6 @@ export const getSinglePostById = async (id) => {
           category {
             name
           }
-          content {
-            markdown
-          }
           heroImage {
             url
           }
@@ -109,9 +102,7 @@ export const getAllPosts = async () => {
             name
             slug
           }
-          content {
-            markdown
-          }
+          content
           excerpt
           heroImage {
             alternate

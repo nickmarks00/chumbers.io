@@ -232,8 +232,10 @@ const components = {
       />
     );
   },
-  hl: ({ children }) => {
-    return <span className="bg-teal">{children}</span>;
+  highlight: ({ text }) => {
+    return (
+      <span style={{ backgroundColor: "rgba(78, 246, 199, 0.4)" }}>{text}</span>
+    );
   },
 };
 
