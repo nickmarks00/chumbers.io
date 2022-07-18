@@ -7,7 +7,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { Toaster } from "react-hot-toast";
 
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../context/searchContext";
 
 function useKey(key, cb) {
   const callbackRef = useRef(cb);
