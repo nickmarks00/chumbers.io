@@ -4,7 +4,7 @@ import Image from "next/image";
 import debounce from "lodash.debounce";
 import { IoMdClose } from "react-icons/io";
 
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../context/searchContext";
 
 import Button from "./Button";
 import Loader from "./Loader";
