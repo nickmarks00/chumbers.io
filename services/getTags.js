@@ -17,6 +17,21 @@ export const getTagsLink = async () => {
   return result.data.tags;
 };
 
+export const getTagsSimple = async () => {
+  const result = await client.query({
+    query: gql`
+      query {
+        tags {
+          slug
+          updatedAt
+        }
+      }
+    `,
+  });
+
+  return result.data.tags;
+};
+
 export const getTagsFull = async () => {
   const result = await client.query({
     query: gql`

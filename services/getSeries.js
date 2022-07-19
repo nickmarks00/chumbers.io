@@ -20,6 +20,21 @@ export const getSeriesPaths = async () => {
   return result.data.allSeriesConnection.edges;
 };
 
+export const getSeriesSimple = async () => {
+  const result = await client.query({
+    query: gql`
+      query {
+        allSeries {
+          slug
+          updatedAt
+        }
+      }
+    `,
+  });
+
+  return result.data.allSeries;
+};
+
 export const getSingleSeries = async (slug) => {
   const result = await client.query({
     query: gql`

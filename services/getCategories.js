@@ -16,6 +16,21 @@ export const getCategoriesLink = async () => {
   return result.data.categories;
 };
 
+export const getCategoriesSimple = async () => {
+  const result = await client.query({
+    query: gql`
+      query {
+        categories {
+          slug
+          updatedAt
+        }
+      }
+    `,
+  });
+
+  return result.data.categories;
+};
+
 export const getCategoriesFull = async () => {
   const result = await client.query({
     query: gql`
