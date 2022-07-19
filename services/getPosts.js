@@ -26,6 +26,7 @@ export const getSinglePost = async (slug) => {
       query GetPost($slug: String!) {
         post(where: { slug: $slug }) {
           title
+          excerpt
           slug
           updatedAt
           category {

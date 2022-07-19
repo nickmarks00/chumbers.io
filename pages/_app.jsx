@@ -9,6 +9,14 @@ import { Toaster } from "react-hot-toast";
 
 import { SearchContext } from "../context/searchContext";
 
+import TagManager from "react-gtm-module";
+
+const tagManagerArgs = {
+  gtmId: "GTM-KZXLFX7",
+};
+
+TagManager.initialize(tagManagerArgs);
+
 function useKey(key, cb) {
   const callbackRef = useRef(cb);
 

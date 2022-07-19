@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useQuery } from "@apollo/client";
 
 import Navbar from "./Navbar";
 import Footer from "./footer/Footer";
@@ -14,11 +13,11 @@ const Layout = ({ children }) => {
     getCategoriesLink().then((res) => setCategories(res));
   }, []);
   return (
-    <div id="site-wrapper">
+    <>
       <Navbar categories={categories} />
       {children}
       <Footer categories={categories} />
-    </div>
+    </>
   );
 };
 

@@ -20,6 +20,8 @@ import components from "../../styles/components";
 import { getReadingTime } from "../../services/getReadingTime";
 import { mdxSerializer } from "../../services/mdxSerializer";
 
+import Seo from "../../components/SEO";
+
 import BackToTop from "../../components/BackToTop";
 import Loader from "../../components/Loader";
 import Related from "../../sections/Related";
@@ -44,6 +46,8 @@ const Content = ({ post }) => {
           crossOrigin="anonymous"
         />
       </Head>
+
+      <Seo title={post.title} description={post.excerpt} />
 
       {/* <ScrollProgressBar /> */}
       {/* <BackToTop /> */}
