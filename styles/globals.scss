@@ -888,15 +888,24 @@ code {
   }
 }
 
-// .toc li.active > a {
-//   border-color: $primary;
-//   border-left-width: 4px;
-// }
+.toc a:hover {
+  color: lightgray;
+  font-weight: 700;
+  background-color: $tertiary;
+}
 
-.toc li:hover {
-  a {
-    color: lightgray;
-  }
+.toc-container li {
+  padding-bottom: 0.6rem;
+  padding-left: 0.5rem;
+}
+
+.toc-container li ul li {
+  padding-left: 1rem;
+  padding-bottom: 0.4rem;
+}
+
+.toc-container li ul {
+  padding-top: 0.4rem;
 }
 
 .toc li {

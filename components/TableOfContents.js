@@ -17,12 +17,12 @@ const TableOfContents = ({ headings }) => {
   }
 
   return (
-    <nav className="toc sticky" aria-label="Table of contents" id="toc">
-      <h3 className="uppercase mb-3 pl-2 text-gray-400 text-sm">
+    <nav className="toc sticky my-4" aria-label="Table of contents" id="toc">
+      <h3 className="uppercase mb-3 pl-3 text-gray-400 text-sm">
         table of contents
       </h3>
       <div
-        className="border-l-2 text-sm"
+        className="border-l-2 pt-3 pl-2 text-xs toc-container"
         dangerouslySetInnerHTML={{ __html: headings }}
       />
     </nav>
