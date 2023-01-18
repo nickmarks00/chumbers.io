@@ -31,6 +31,7 @@ export async function getStaticProps({ params }) {
     props: {
       series: series,
     },
+    revalidate: 300,
   };
 }
 
