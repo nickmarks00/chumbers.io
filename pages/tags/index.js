@@ -20,5 +20,6 @@ export async function getStaticProps() {
     props: {
       tags: tags,
     },
+    revalidate: 300,
   };
 }
