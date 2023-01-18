@@ -32,7 +32,7 @@ const InputField = ({
         disabled={disabled}
         id={id}
       />
-      <Button buttonText={btnLabel} className="mr-3 ml-4" />
+      <Button buttonText={btnLabel} className="mr-4" />
     </form>
   );
 };

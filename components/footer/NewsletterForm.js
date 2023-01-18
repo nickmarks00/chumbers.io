@@ -66,13 +66,9 @@ const NewsletterForm = ({ status, message, onValidated }) => {
   };
 
   return (
-    <div className="col-span-3 md:col-span-2 items-center flex flex-col text-sm mb-4">
-      <h4 className="text-gray-200 uppercase font-semibold">
-        Subscribe to receive updates
-      </h4>
-      <p className="text-gray-200">
-        Get the latest posts, articles and series sent directly to your inbox
-      </p>
+    <div className="col-span-3 md:col-span-2 items-center flex flex-col text-sm mt-6">
+      <h4 className="text-gray-200 uppercase font-semibold">Subscribe</h4>
+      <p className="text-gray-200">Just a weekly newsletter, nothing more.</p>
       <div className="mt-2 w-full">
         <InputField
           type="email"
@@ -90,13 +86,13 @@ const NewsletterForm = ({ status, message, onValidated }) => {
         {"sending" === status ? <Loader className="mt-12" /> : null}
         {"error" === status || error ? (
           <div
-            className="text-red-400 pt-12"
+            className="text-red-400 pt-4"
             dangerouslySetInnerHTML={{ __html: error || getMessage(message) }}
           />
         ) : null}
         {"success" === status && "error" !== status && !error && (
           <div
-            className="text-green-200 font-bold pt-12"
+            className="text-green-200 font-bold pt-4"
             dangerouslySetInnerHTML={{ __html: sanitize(message) }}
           />
         )}

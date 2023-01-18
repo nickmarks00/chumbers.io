@@ -590,11 +590,13 @@ code {
 }
 
 .post-image {
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  @media (max-width: 768px) {
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
 
   &:hover {
     svg {
@@ -603,8 +605,11 @@ code {
     }
   }
 
-  @media (min-width: 1024px) {
-    height: 30rem !important;
+  img {
+    @media (min-width: 768px) {
+      max-height: 75vh !important;
+      margin: 0 auto;
+    }
   }
 }
 
@@ -888,15 +893,24 @@ code {
   }
 }
 
-// .toc li.active > a {
-//   border-color: $primary;
-//   border-left-width: 4px;
-// }
+.toc a:hover {
+  color: lightgray;
+  font-weight: 700;
+  background-color: $tertiary;
+}
 
-.toc li:hover {
-  a {
-    color: lightgray;
-  }
+.toc-container li {
+  padding-bottom: 0.6rem;
+  padding-left: 0.5rem;
+}
+
+.toc-container li ul li {
+  padding-left: 1rem;
+  padding-bottom: 0.4rem;
+}
+
+.toc-container li ul {
+  padding-top: 0.4rem;
 }
 
 .toc li {
@@ -984,5 +998,29 @@ code {
 @media (min-width: 770px) and (max-width: 870px) {
   .inputForm {
     max-width: 60%;
+  }
+}
+
+// POST IMAGES
+.__react_modal_image__modal_content {
+  img {
+    background-color: white !important;
+    max-height: 85%;
+    min-height: 50%;
+  }
+}
+
+.__react_modal_image__caption {
+  color: $white !important;
+  font-weight: 500;
+  font-size: 1rem !important;
+  float: left;
+}
+
+.__react_modal_image__icon_menu {
+  margin-top: 0.5rem;
+
+  a {
+    border-radius: 5px;
   }
 }

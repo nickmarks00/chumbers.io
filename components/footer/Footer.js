@@ -104,7 +104,7 @@ const Footer = ({ categories }) => {
             <FiGithub />
           </a>
           <a
-            href="mailto:nickmarks00@gmail.com"
+            href="mailto:uw0drarf@duck.com"
             className="icon"
             target="_blank"
             rel="noreferrer"
