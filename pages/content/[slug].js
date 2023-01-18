@@ -199,6 +199,8 @@ const Content = ({ post }) => {
 export default Content;
 
 export async function getStaticProps({ params }) {
+  console.log("Generating/regenerating the page...");
+
   const post = await getSinglePost(params.slug);
 
   const headings = await getHeadings(post.content);
