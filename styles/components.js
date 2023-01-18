@@ -176,7 +176,7 @@ const components = {
     );
   },
   blockquote: ({ children }) => (
-    <blockquote className="ml-2 my-4 py-2 font-display text-xl pl-4 border-l-4 border-off-black italic transition duration-500 ease-out hover:border-teal bg-red rounded-sm">
+    <blockquote className="ml-2 my-4 py-2 font-display text-xl pl-4 border-l-4 border-off-black italic transition duration-500 ease-out hover:border-teal bg-red rounded-sm flex-wrap">
       {children}
     </blockquote>
   ),

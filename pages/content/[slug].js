@@ -111,8 +111,8 @@ const Content = ({ post }) => {
         </header>
 
         <section
-          className="rich-text text-left xl:mx-auto md:mx-28 xs:mx-3 text-off-black"
-          style={{ maxWidth: 740 }}
+          className="rich-text text-left xl:mx-auto md:mx-24 xs:mx-3 text-off-black"
+          style={{ maxWidth: 800 }}
         >
           <div className="w-full flex flex-col ">
             {post.headings.length > 0 && (
