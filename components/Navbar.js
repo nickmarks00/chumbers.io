@@ -71,7 +71,7 @@ const MoreMenu = () => {
         <li className="mb-2 mx-3">
           <a
             className="transition duration-200 hover:text-teal flex items-center"
-            href="mailto:nickmarks0000@gmail.com"
+            href="mailto:uw0drarf@duck.com"
             target="_blank"
             rel="noreferrer"
           >
