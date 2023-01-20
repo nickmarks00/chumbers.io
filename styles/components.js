@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-import PostImage from "../components/PostImage";
+import Button from "../components/Button";
 import Codeblock from "../components/Codeblock";
+import PostImage from "../components/PostImage";
 
 import { BiLink } from "react-icons/bi";
 
@@ -236,6 +237,11 @@ const components = {
     return (
       <span style={{ backgroundColor: "rgba(78, 246, 199, 0.4)" }}>{text}</span>
     );
+  },
+  button: ({ text, link }) => {
+    <div className="mt-3 mb-4">
+      <Button buttonText={text} href={link} />
+    </div>;
   },
 };
 
