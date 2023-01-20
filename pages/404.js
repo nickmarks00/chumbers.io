@@ -23,12 +23,12 @@ const NotFoundPage = () => {
             The page you are looking for might have been removed, had its name
             changed, or is temporarily unavailable.
           </p>
-          <Link href="/">
-            <a className="bg-white">Return Home</a>
+          <Link href="/" className="p-3">
+            <a className="bg-white p-3">Return Home</a>
           </Link>
 
           <p className="mt-6">Clicked on a broken link?</p>
-          <a href="mailto:uw0drarf@duck.com" className="bg-white">
+          <a href="mailto:uw0drarf@duck.com" className="bg-white p-3">
             Contact me
           </a>
         </div>

@@ -5,6 +5,7 @@ const Button = ({
   buttonText,
   href = null,
   className,
+  blankTarget = false,
   style,
   type = "submit",
 }) => {
@@ -12,7 +13,12 @@ const Button = ({
     return (
       <div className="notfound">
         <Link href={href}>
-          <a className="bg-white">{buttonText}</a>
+          <a
+            className={`bg-white ${style}`}
+            target={`${blankTarget} ? _blank : undefined`}
+          >
+            {buttonText}
+          </a>
         </Link>
       </div>
     );

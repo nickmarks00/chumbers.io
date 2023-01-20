@@ -239,9 +239,21 @@ const components = {
     );
   },
   button: ({ text, link }) => {
-    <div className="mt-3 mb-4">
-      <Button buttonText={text} href={link} />
-    </div>;
+    return (
+      <>
+        <div className="mt-3 mb-4 text-left">
+          <Button
+            buttonText={text}
+            href={link}
+            style="p-3"
+            blankTarget={true}
+          />
+        </div>
+        <div className="mt-4">
+          <hr className="pt-2"></hr>
+        </div>
+      </>
+    );
   },
 };
 
