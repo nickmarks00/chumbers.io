@@ -128,7 +128,7 @@ const IconSet = () => {
   return (
     <>
       <a
-        href="https://www.youtube.com/c/Chumbers"
+        href="https://www.youtube.com/@chumbers."
         className="icon"
         target="_blank"
         rel="noreferrer"

@@ -80,7 +80,7 @@ const Footer = ({ categories }) => {
         </article>
         <div className="text-gray-500 flex mt-9 sm:mt-1 justify-center">
           <a
-            href="https://www.youtube.com/c/Chumbers"
+            href="https://www.youtube.com/@chumbers."
             className="icon"
             target="_blank"
             rel="noreferrer"
