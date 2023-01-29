@@ -255,6 +255,18 @@ const components = {
       </>
     );
   },
+  videoEmbed: ({ url, caption }) => {
+    return (
+      <>
+        <div className="w-full">
+          <video src={url} controls></video>
+          <figcaption className="font-display italic text-sm text-gray-500 mt-2">
+            {caption}
+          </figcaption>
+        </div>
+      </>
+    );
+  },
 };
 
 export default components;
