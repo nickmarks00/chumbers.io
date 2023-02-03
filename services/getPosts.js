@@ -28,7 +28,8 @@ export const getSinglePost = async (slug) => {
           title
           excerpt
           slug
-          updatedAt
+          createdAt
+          publishedAt
           category {
             name
             slug
@@ -55,6 +56,7 @@ export const getSinglePost = async (slug) => {
             seriesTitle
             slug
           }
+          readingTime
         }
       }
     `,
@@ -73,6 +75,7 @@ export const getSinglePostById = async (id) => {
           slug
           excerpt
           publishedAt
+          createdAt
           category {
             name
           }
@@ -82,6 +85,7 @@ export const getSinglePostById = async (id) => {
           series {
             seriesTitle
           }
+          readingTime
         }
       }
     `,
@@ -98,7 +102,8 @@ export const getAllPostsSimple = async () => {
         posts {
           title
           slug
-          updatedAt
+          createdAt
+          publishedAt
         }
       }
     `,
@@ -111,25 +116,18 @@ export const getAllPosts = async () => {
   const result = await client.query({
     query: gql`
       query GetPosts {
-        posts {
+        posts(orderBy: createdAt_DESC) {
           title
           slug
-          updatedAt
+          publishedAt
+          createdAt
           category {
             name
             slug
           }
-          content
           excerpt
-          heroImage {
-            alternate
-            url
-          }
           featuredPost
-          tags {
-            name
-            slug
-          }
+          readingTime
         }
       }
     `,

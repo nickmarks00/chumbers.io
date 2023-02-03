@@ -36,7 +36,7 @@ export const getTagsFull = async () => {
   const result = await client.query({
     query: gql`
       query {
-        tags {
+        tags(orderBy: name_ASC) {
           name
           slug
           updatedAt
@@ -77,15 +77,15 @@ export const getSingleTag = async (slug) => {
         tag(where: { slug: $slug }) {
           name
           slug
-          post {
+          post(orderBy: createdAt_DESC) {
             id
             featuredPost
             slug
             title
             publishedAt
-            updatedAt
-            content
+            createdAt
             excerpt
+            readingTime
           }
         }
       }

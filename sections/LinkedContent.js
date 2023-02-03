@@ -12,7 +12,6 @@ import {
 } from "react-icons/bs";
 // import { BiDownArrow, BiUpArrow } from "react-icons/bi"
 
-import { getReadingTime } from "../services/getReadingTime";
 import GradientGenerator from "../components/GradientGenerator";
 
 const LinkedContent = ({
@@ -92,7 +91,7 @@ const LinkedContent = ({
 
             <div className="flex flex-col mt-4">
               {posts.map((post, idx) => {
-                const { featuredPost, title, updatedAt, content, excerpt } =
+                const { featuredPost, title, createdAt, readingTime, excerpt } =
                   post;
 
                 return (
@@ -106,11 +105,11 @@ const LinkedContent = ({
                           <div className="flex">
                             <p className="flex mx-2 items-center">
                               <BsFillCalendarFill className="mr-2" />{" "}
-                              {moment(updatedAt).format("MMM DD, YYYY")}
+                              {moment(createdAt).format("MMM DD, YYYY")}
                             </p>
                             <p className="flex mx-2 items-center">
                               <BsClock className="mr-2" />
-                              {`${getReadingTime(content)} min. read`}
+                              {`${readingTime} min. read`}
                             </p>
                             {featuredPost && (
                               <p className="flex mx-2 items-center">

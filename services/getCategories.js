@@ -84,22 +84,19 @@ export const getSingleCategory = async (slug) => {
         category(where: { slug: $slug }) {
           name
           slug
-          posts {
+          posts(orderBy: createdAt_DESC) {
             id
             featuredPost
             slug
             title
+            createdAt
             publishedAt
-            updatedAt
-            content
             excerpt
+            readingTime
           }
           categoryPicture {
             alternate
             url
-          }
-          categoryTheme {
-            hex
           }
         }
       }

@@ -77,7 +77,7 @@ const SignupForm = ({ status, message, onValidated }) => {
     });
 
     try {
-      document.getElementById("contactForm").reset();
+      document.getElementById("signupForm").reset();
       $(".float-label-field").removeClass("float");
     } catch (e) {
       console.log(e);
@@ -127,7 +127,7 @@ const SignupForm = ({ status, message, onValidated }) => {
           <p className="mt-6 font-display font-bold text-lg">
             View previous editions on{" "}
             <a
-              href="https://chumbers.io/newsletter"
+              href="https://chumbers.io/categories/newsletter"
               className="underline--magical"
               target="_blank"
               rel="noreferrer"

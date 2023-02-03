@@ -8,6 +8,8 @@ import {
   FiLinkedin,
   FiGithub,
   FiMoreHorizontal,
+  FiFacebook,
+  FiInstagram,
 } from "react-icons/fi";
 import { AiOutlineMedium, AiOutlineClose } from "react-icons/ai";
 import { SiSubstack } from "react-icons/si";
@@ -65,9 +67,20 @@ const MoreMenu = () => {
         onClick={() => toast.dismiss()}
       />
       <h2 className="font-display text-large underline--magical my-2 inline-block">
-        My socials
+        More links
       </h2>
       <ul className="ul-none mr-5" style={{ listStyleType: "none" }}>
+        <li className="mb-2 mx-3">
+          <a
+            className="transition duration-200 hover:text-teal flex items-center"
+            href="https://facebook.com/nick.marks.d"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FiFacebook className="ml-1 mr-3" />
+            <p>Facebook</p>
+          </a>
+        </li>
         <li className="mb-2 mx-3">
           <a
             className="transition duration-200 hover:text-teal flex items-center"
@@ -134,6 +147,14 @@ const IconSet = () => {
         rel="noreferrer"
       >
         <FiYoutube />
+      </a>
+      <a
+        href="https://instagram.com/__nickmarks"
+        className="icon"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FiInstagram />
       </a>
       <a
         href="https://linkedin.com/in/nickmarks00"

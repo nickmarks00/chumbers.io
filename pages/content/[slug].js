@@ -13,11 +13,11 @@ import {
   BsArrowRight,
 } from "react-icons/bs";
 import { FiTwitter, FiFacebook, FiLinkedin } from "react-icons/fi";
+import { AiFillEdit } from "react-icons/ai";
 
 import { getPostPaths, getSinglePost } from "../../services/getPosts";
 import { getHeadings } from "../../services/getHeadings";
 import components from "../../styles/components";
-import { getReadingTime } from "../../services/getReadingTime";
 import { mdxSerializer } from "../../services/mdxSerializer";
 
 import Seo from "../../components/SEO";
@@ -85,13 +85,17 @@ const Content = ({ post }) => {
             <div className="flex flex-col sm:flex-row my-2">
               <article className="flex items-center py-1 mt-1 mr-4">
                 <BsFillCalendarFill className="mr-1" />
-                {moment(post.publishedAt).format("MMM DD, YYYY")}
+                {moment(post.createdAt).format("MMM DD, YYYY")}
               </article>
               <article className="flex items-center py-1 mt-1">
                 <BsClock className="mr-1" />
-                <p>{getReadingTime(post.content)} min. read</p>
+                <p>{post.readingTime} min. read</p>
               </article>
             </div>
+            <article className="flex items-center mb-3 mr-4">
+              <AiFillEdit className="mr-1" />
+              Last edited on {moment(post.publishedAt).format("MMM DD, YYYY")}
+            </article>
             {post.series && (
               <Link href={`/series/${post.series.slug}`}>
                 <a className="h-10 px-2 py-3 mr-1 my-auto flex items-center rounded-md border-2 border-blue-500 transition transform duration-500 hover:text-white hover:bg-blue-500 font-bold  mb-4">{`${post.series.seriesTitle}`}</a>
