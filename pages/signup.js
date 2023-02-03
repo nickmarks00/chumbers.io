@@ -110,9 +110,9 @@ const SignupForm = ({ status, message, onValidated }) => {
         </h2>
         <header className="my-3">
           <p className="mb-4">
-            Each week I'm collating the different blogs and essays I've written
-            during that week and shipping it out along with some other
-            miscellaneous thoughts, experiments and ideas.
+            Each week I&apos;m collating the different blogs and essays
+            I&apos;ve written during that week and shipping it out along with
+            some other miscellaneous thoughts, experiments and ideas.
             <br></br>
             <br></br>
             Particularly whilst I am overseas in 2023, it is a useful way for me
@@ -121,7 +121,7 @@ const SignupForm = ({ status, message, onValidated }) => {
             of sitting down to write.
             <br></br>
             <br></br>
-            It is nothing special at all. Just stuff I'm passionate about.
+            It is really nothing special. Just stuff I&apos;m passionate about.
           </p>
 
           <p className="mt-6 font-display font-bold text-lg">
