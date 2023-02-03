@@ -7,7 +7,6 @@ import { BsFillCalendarFill, BsClock } from "react-icons/bs";
 import { getReadingTime } from "../services/getReadingTime";
 
 const PostCard = ({ post, isRelated = false, key = Math.random() }) => {
-  console.log(post);
   return (
     <Link key={key} href={`/content/${post.slug}`}>
       <a

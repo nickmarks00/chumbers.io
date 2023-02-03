@@ -182,7 +182,14 @@ const components = {
     </blockquote>
   ),
   img: ({ src, alt }) => {
-    return <PostImage src={src} altText={alt} />;
+    return (
+      <figure className="my-4">
+        <PostImage src={src} altText={alt} />
+        <figcaption className="font-display italic text-sm text-gray-500 mt-2">
+          {alt}
+        </figcaption>
+      </figure>
+    );
   },
   li: ({ children }) => {
     return <li className="leading-7 not-pg my-1">{children}</li>;
@@ -200,7 +207,7 @@ const components = {
       </table>
     </section>
   ),
-  thead: ({ children, ...props }) => {
+  thead: ({ children }) => {
     return (
       <thead className="h-12 border-b border-off-black bg-teal">
         {children}
@@ -255,16 +262,16 @@ const components = {
       </>
     );
   },
-  videoEmbed: ({ url, caption }) => {
+  videoembed: ({ url, caption }) => {
     return (
-      <>
-        <div className="w-full">
+      <figure className="my-4">
+        <div className="overflow-hidden max-h-3/4 post-image relative cursor-pointer">
           <video src={url} controls></video>
-          <figcaption className="font-display italic text-sm text-gray-500 mt-2">
-            {caption}
-          </figcaption>
         </div>
-      </>
+        <figcaption className="font-display italic text-sm text-gray-500 mt-2">
+          {caption}
+        </figcaption>
+      </figure>
     );
   },
 };

@@ -14,9 +14,6 @@ const PostImage = ({ src, altText }) => {
         />
         <FiMaximize2 className="absolute top-3 right-4 text-3xl bg-gray-200 text-off-black p-1 rounded-md transition duration-300 ease-in hover:bg-teal hover:text-white" />
       </div>
-      <figcaption className="font-display italic text-sm text-gray-500 mt-2">
-        {altText}
-      </figcaption>
     </figure>
   );
 };
