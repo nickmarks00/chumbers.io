@@ -130,6 +130,7 @@ const SignupForm = ({ status, message, onValidated }) => {
               href="https://chumbers.io/newsletter"
               className="underline--magical"
               target="_blank"
+              rel="noreferrer"
             >
               here on my website
             </a>{" "}
@@ -137,6 +138,7 @@ const SignupForm = ({ status, message, onValidated }) => {
             <a
               className="underline--magical"
               target="_blank"
+              rel="noreferrer"
               href="https://us12.campaign-archive.com/home/?u=ae8043f0d332135e9a03c7190&id=1fa8b7342c"
             >
               email archive
