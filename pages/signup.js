@@ -176,7 +176,7 @@ const SignupForm = ({ status, message, onValidated }) => {
                 />
               </fieldset>
               <fieldset className="float-label-field w-full ml-1">
-                <label htmlFor="txtLastName">Last name (optional)</label>
+                <label htmlFor="txtLastName">Last name</label>
                 <input
                   id="txtLastName"
                   type="text"
