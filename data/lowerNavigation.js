@@ -33,6 +33,10 @@ export const lowerNavigation = [
         slug: "/portfolio",
       },
       {
+        name: "subscribe",
+        slug: "/signup",
+      },
+      {
         name: "contact",
         slug: "/contact",
       },

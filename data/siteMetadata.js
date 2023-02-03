@@ -10,5 +10,6 @@ export const siteMetadata = {
   social: {
     twitter: "nickmarks00",
     linkedIn: "nickmarks00",
+    instagram: "__nickmarks",
   },
 };

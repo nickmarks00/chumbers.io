@@ -105,7 +105,7 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                rows="10"
+                rows="6"
                 type="text"
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -115,7 +115,7 @@ const Contact = () => {
             {loading ? (
               <Loader />
             ) : (
-              <Button buttonText={"Contact me"} className="p-2" />
+              <Button buttonText={"Contact me"} className="py-2" />
             )}
           </form>
         </section>
