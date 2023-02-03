@@ -112,7 +112,7 @@ const SignupForm = ({ status, message, onValidated }) => {
           <p className="mb-4">
             Each week I&apos;m collating the different blogs and essays
             I&apos;ve written during that week and shipping it out along with
-            some other miscellaneous thoughts, experiments and ideas.
+            some other miscellaneous thoughts and ideas.
             <br></br>
             <br></br>
             Particularly whilst I am overseas in 2023, it is a useful way for me
