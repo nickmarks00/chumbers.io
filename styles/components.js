@@ -266,7 +266,7 @@ const components = {
     return (
       <figure className="my-4">
         <div className="overflow-hidden max-h-3/4 post-image relative cursor-pointer">
-          <video src={url} controls></video>
+          <video className="max-h-3/4" src={url} controls></video>
         </div>
         <figcaption className="font-display italic text-sm text-gray-500 mt-2">
           {caption}
