@@ -39,9 +39,7 @@ const Latest = ({ latest }) => {
                     </div>
                     <div className="flex flex-row">
                       <BsClock className="mx-2 mr-2" />
-                      <p className="text-xs">
-                        {getReadingTime(post.content)} min. read
-                      </p>
+                      <p className="text-xs">{post.readingTime} min. read</p>
                     </div>
                   </div>
                   <article className="text-xs mt-3 post-preview l3">

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Script from "next/script";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
@@ -36,6 +37,23 @@ const Content = ({ post }) => {
 
   const url = typeof window !== "undefined" ? window.location.href : "";
 
+  useEffect(() => {
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true },
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false,
+      });
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -44,6 +62,18 @@ const Content = ({ post }) => {
           href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css"
           integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc"
           crossOrigin="anonymous"
+        />
+        <Script
+          defer
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+          integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+          crossorigin="anonymous"
+        />
+        <Script
+          defer
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+          integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+          crossorigin="anonymous"
         />
       </Head>
 

@@ -19,6 +19,7 @@ export const getFeatured = async () => {
           }
           createdAt
           featuredPost
+          readingTime
           heroImage {
             url
             alternate
@@ -56,6 +57,7 @@ export const getLatest = async () => {
           }
           createdAt
           featuredPost
+          readingTime
           heroImage {
             url
             alternate
