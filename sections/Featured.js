@@ -9,10 +9,6 @@ import {
 } from "react-icons/bs";
 import moment from "moment";
 
-import { getReadingTime } from "../services/getReadingTime";
-
-import Tag from "../components/Tag";
-
 const Featured = ({ featured }) => {
   return (
     <section className="text-center mt-8">
@@ -67,9 +63,7 @@ const Featured = ({ featured }) => {
                       </div>
                       <div className="flex flex-row">
                         <BsClock className="md:mx-2 mr-2" />
-                        <p className="text-xs">
-                          {getReadingTime(post.content)} min. read
-                        </p>
+                        <p className="text-xs">{post.readingTime} min. read</p>
                       </div>
                     </div>
                     <p className="text-xs post-preview l4">{post.excerpt}</p>

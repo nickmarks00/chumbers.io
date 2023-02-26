@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import Button from "../components/Button";
 import Codeblock from "../components/Codeblock";
@@ -182,14 +183,7 @@ const components = {
     </blockquote>
   ),
   img: ({ src, alt }) => {
-    return (
-      <figure className="my-4">
-        <PostImage src={src} altText={alt} />
-        <figcaption className="font-display italic text-sm text-gray-500 mt-2">
-          {alt}
-        </figcaption>
-      </figure>
-    );
+    return <PostImage src={src} altText={alt} />;
   },
   li: ({ children }) => {
     return <li className="leading-7 not-pg my-1">{children}</li>;
@@ -272,6 +266,67 @@ const components = {
           {caption}
         </figcaption>
       </figure>
+    );
+  },
+  carousel: ({ images, captions = "" }) => {
+    const imageArr = images.split("|");
+    const captionArr = captions
+      ? captions.split("|")
+      : Array.apply(null, Array(imageArr.length)).map(function (_) {
+          return "";
+        });
+
+    const [currImage, setCurrImage] = useState(0);
+
+    return (
+      <>
+        <div className="slideshow-container w-full h-full relative m-auto post-image">
+          {imageArr.map((image, i) => {
+            return (
+              <div
+                className={`mySlides fade ${
+                  currImage == i ? "relative" : "hidden"
+                }`}
+              >
+                <PostImage
+                  src={image}
+                  altText={`${captionArr[i]} (${i + 1} / ${imageArr.length})`}
+                />
+              </div>
+            );
+          })}
+          <a
+            className="prev"
+            onClick={() => setCurrImage((currImage - 1) % imageArr.length)}
+          >
+            &#10094;
+          </a>
+          <a
+            className="next"
+            onClick={() => {
+              setCurrImage((currImage + 1) % imageArr.length);
+            }}
+          >
+            &#10095;
+          </a>
+        </div>
+
+        <div className="text-center">
+          {imageArr.map((_, i) => {
+            return (
+              <span
+                className={`dot ${
+                  currImage == i ? "bg-teal" : "bg-gray-200"
+                } hover:bg-gray-400`}
+                onClick={() => {
+                  setCurrImage(i);
+                }}
+              ></span>
+            );
+          })}
+        </div>
+        <hr />
+      </>
     );
   },
 };

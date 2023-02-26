@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Script from "next/script";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
