@@ -41,11 +41,11 @@ export const getSingleSeries = async (slug) => {
         query GetSeries($slug: String!) {
             series(where: { slug: $slug }) {
                 seriesTitle
-                readingTime
                 slug
                 overview
                 posts {
                     featuredPost
+                    readingTime
                     slug
                     title
                     publishedAt
