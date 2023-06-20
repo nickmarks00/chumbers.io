@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "../components/Button";
 import Codeblock from "../components/Codeblock";
 import PostImage from "../components/PostImage";
+import PostCard from "../components/PostCard.js";
 
 import { BiLink } from "react-icons/bi";
 
@@ -284,6 +285,7 @@ const components = {
           {imageArr.map((image, i) => {
             return (
               <div
+                key={i}
                 className={`mySlides fade ${
                   currImage == i ? "relative" : "hidden"
                 }`}
@@ -315,6 +317,7 @@ const components = {
           {imageArr.map((_, i) => {
             return (
               <span
+                key={i}
                 className={`dot ${
                   currImage == i ? "bg-teal" : "bg-gray-200"
                 } hover:bg-gray-400`}
@@ -329,6 +332,41 @@ const components = {
       </>
     );
   },
+    card: ({img, header, body, link}) => {
+        return (
+            <Link href={link} className="my-3">
+                
+            <a
+            className="flex justify-between my-3 rounded-lg shadow-lg transform duration-200 ease-out bg-white hover:shadow-xl hover:bg-gray-200  hover:font-bold hover:text-teal cursor-pointer overflow-hidden mb-1"
+            style={{ minHeight: "8rem" }}
+            >
+            <div className="hidden sm:inline w-48">
+            <div className="w-48 h-full relative">
+            <Image
+            src={img}
+            alt={header}
+            quality="5"
+            layout="fill"
+            objectFit="cover"
+            />
+            </div>
+            </div>
+            <div className="mx-4 py-5 flex-grow">
+            <div className="flex">
+            <p className="text-gray-500 text-xs mr-2 flex items-center">
+            </p>
+            </div>
+            <p key={header} className="text-md pl-2 whitespace-pre-wrap">
+            {header}
+            </p>
+            <p className="text-sm pl-2 whitespace-pre-wrap text-gray-500">
+            {body}
+            </p>
+            </div>
+            </a>
+            </Link>
+        )
+    },
 };
 
 export default components;
